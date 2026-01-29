@@ -156,16 +156,16 @@ export default function Home() {
                 community organizers, educators, caregivers, and youth leaders.
               </p>
             </div>
-            <div className="mt-8 grid gap-6 sm:grid-cols-3">
+            <div className="mt-8 grid gap-4 sm:grid-cols-3">
               {pillars.map((pillar) => (
                 <div
                   key={pillar.title}
-                  className="rounded-2xl border border-sky-100 bg-white/80 p-4 shadow-sm shadow-sky-200/60"
+                  className="rounded-2xl border border-sky-100 bg-white/80 p-3 shadow-sm shadow-sky-200/60"
                 >
-                  <h3 className="text-sm font-semibold text-slate-900">
+                  <h3 className="text-[13px] font-semibold tracking-tight text-slate-900">
                     {pillar.title}
                   </h3>
-                  <p className="mt-2 text-xs leading-relaxed text-slate-700">
+                  <p className="mt-1 text-[11px] leading-relaxed text-slate-700">
                     {pillar.body}
                   </p>
                 </div>
@@ -253,27 +253,27 @@ export default function Home() {
                 basis.
               </p>
             </div>
-            <div className="mt-8 grid gap-6 sm:grid-cols-3">
+            <div className="mt-8 grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:gap-6">
               {initiatives.map((item) => (
                 <article
                   key={item.title}
-                  className="flex flex-col gap-3 rounded-2xl border border-indigo-200/40 bg-indigo-900/50 p-4 backdrop-blur-sm"
+                  className="flex flex-col gap-2 rounded-2xl border border-indigo-200/40 bg-indigo-900/50 p-3 backdrop-blur-sm"
                 >
                   <div className="flex items-center gap-2">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-emerald-400/15 ring-1 ring-emerald-300/70">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-400/15 ring-1 ring-emerald-300/70">
                       <Image
                         src={item.icon}
                         alt=""
-                        width={18}
-                        height={18}
+                        width={16}
+                        height={16}
                         className="opacity-95"
                       />
                     </div>
-                    <h3 className="text-sm font-semibold text-slate-50">
+                    <h3 className="text-[13px] font-semibold tracking-tight text-slate-50">
                       {item.title}
                     </h3>
                   </div>
-                  <p className="text-xs leading-relaxed text-indigo-100">
+                  <p className="text-[11px] leading-relaxed text-indigo-100">
                     {item.body}
                   </p>
                 </article>
@@ -303,21 +303,21 @@ export default function Home() {
                 You can change or pause your involvement at any time.
               </p>
             </div>
-            <div className="mt-8 grid gap-6 sm:grid-cols-3">
+            <div className="mt-8 grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:gap-6">
               {waysToJoin.map((way) => (
                 <div
                   key={way.title}
-                  className="flex flex-col justify-between rounded-2xl border border-indigo-500/40 bg-indigo-900/40 p-4 backdrop-blur-sm"
+                  className="flex flex-col justify-between rounded-2xl border border-indigo-500/40 bg-indigo-900/40 p-3 backdrop-blur-sm"
                 >
                   <div className="space-y-2">
-                    <h3 className="text-sm font-semibold text-slate-50">
+                    <h3 className="text-[13px] font-semibold tracking-tight text-slate-50">
                       {way.title}
                     </h3>
-                    <p className="text-xs leading-relaxed text-indigo-100">
+                    <p className="text-[11px] leading-relaxed text-indigo-100">
                       {way.body}
                     </p>
                   </div>
-                  <button className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-emerald-400/95 px-4 py-2 text-xs font-semibold text-slate-950 shadow-sm shadow-emerald-500/60 transition hover:bg-emerald-300">
+                  <button className="mt-3 inline-flex w-full items-center justify-center rounded-full bg-emerald-400/95 px-3 py-1.5 text-[11px] font-semibold text-slate-950 shadow-sm shadow-emerald-500/60 transition hover:bg-emerald-300">
                     {way.action}
                   </button>
                 </div>
