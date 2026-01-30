@@ -1,5 +1,9 @@
+'use client'
+
 import Image from "next/image";
-import { HeroCarousel } from "./components/HeroCarousel";
+import { motion } from "framer-motion";
+// import { HeroCarousel } from "./components/HeroCarousel";
+import CurvedCarousel from "./components/CurvedCarousel";
 
 const stats = [
   { label: "Local chapters", value: "24+" },
@@ -62,195 +66,350 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0c2340] via-[#E6F3FF] to-[#15162b] text-slate-900">
       <main>
-        {/* Hero – carousel passes through "Changing lives" with curved top */}
-        <section className="relative min-h-[90vh] overflow-hidden bg-[#0c2340] text-white">
-          {/* Headline block – sits on top; carousel curves up through this zone */}
-          <div className="relative z-10 mx-auto max-w-6xl px-4 pt-8 sm:px-6 sm:pt-10">
-            <p className="text-sm font-medium text-white/90 sm:text-base">
-              Hala Equity Heroes
-            </p>
-            <p className="mt-0.5 text-sm text-white/80 sm:text-base">
-              Bringing hope and healing
-            </p>
-            <h1 className="mt-3 text-4xl font-bold tracking-tight drop-shadow-[0_2px_8px_rgba(12,35,64,0.8)] sm:text-5xl md:text-6xl">
-              Changing lives
-            </h1>
-            <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white/90 sm:text-base">
-              In regions where resources are scarce, our community-powered
-              initiatives are among the most effective ways to deliver care and
-              equity to those who need it most.
-            </p>
-          </div>
+        {/* Hero with Curved Carousel */}
 
-          {/* Curved clip so carousel passes through headline – defined once, used below */}
-          <svg width={0} height={0} aria-hidden className="absolute">
-            <defs>
-              <clipPath id="hero-carousel-curve" clipPathUnits="objectBoundingBox">
-                <path d="M 0 0 L 0 1 L 1 1 L 1 0 Q 0.5 -0.14 0 0 Z" />
-              </clipPath>
-            </defs>
-          </svg>
-          {/* Carousel with curved top so images pass through the headline area */}
-          <div
-            className="relative -mt-12 h-[48vh] min-h-[300px] sm:-mt-16 sm:h-[52vh] sm:min-h-[340px] md:-mt-20 md:h-[55vh]"
-            style={{ clipPath: "url(#hero-carousel-curve)" }}
-          >
-            <HeroCarousel />
-          </div>
+       {/* Hero with Curved Carousel */}
+{/* Hero with Curved Carousel */}
+<section className="relative min-h-[85vh] sm:min-h-[90vh] overflow-hidden bg-[#0c2340] text-white pb-8">
+  {/* Mobile: Dark overlay for text readability (only on mobile) */}
+  <div className="absolute inset-0 bg-gradient-to-b from-[#0c2340]/95 via-[#0c2340]/70 to-[#0c2340]/95 z-20 pointer-events-none md:hidden" />
+  
+  {/* Mobile: Text box at top */}
+  <div className="relative z-30 mx-auto max-w-6xl px-4 pt-12 sm:pt-16 md:hidden">
+    <div className="bg-[#0c2340]/80 backdrop-blur-sm rounded-2xl p-6">
+      <p className="mt-4 text-sm leading-relaxed text-white/95 sm:text-base">
+        In regions where resources are scarce, our community-powered
+        initiatives are among the most effective ways to deliver care and
+        equity to those who need it most.
+      </p>
+    </div>
+  </div>
 
-          <div className="relative z-10 mx-auto max-w-6xl px-4 pb-8 sm:px-6">
-            <div className="mt-4 flex flex-wrap gap-6 text-xs text-white/70">
-              {stats.map((stat) => (
-                <div key={stat.label}>
-                  <p className="text-sm font-semibold text-white">
-                    {stat.value}
-                  </p>
-                  <p>{stat.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+  {/* Carousel Container */}
+  <div className="absolute inset-0 pt-[240px] sm:pt-[200px] md:pt-8 lg:pt-4">
+    <CurvedCarousel />
+  </div>
+
+  {/* Desktop: Content below carousel */}
+  <div className="relative z-30 mx-auto max-w-6xl px-4 pt-[400px] sm:pt-[380px] md:pt-[380px] lg:pt-[360px] hidden md:block">
+    <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight text-center mb-6">
+      Changing Lives
+    </h1>
+    <p className="text-base md:text-lg leading-relaxed text-white/95 max-w-3xl mx-auto text-center">
+      In regions where resources are scarce, our community-powered
+      initiatives are among the most effective ways to deliver care and
+      equity to those who need it most.
+    </p>
+  </div>
+
+  {/* Stats - Bottom */}
+  <div className="relative z-30 mx-auto max-w-6xl px-4 sm:px-6 mt-8 md:mt-12">
+    <div className="flex flex-wrap gap-4 sm:gap-6 text-xs justify-center md:justify-start">
+      {stats.map((stat) => (
+        <div key={stat.label} className="bg-[#0c2340]/80 backdrop-blur-sm rounded-lg px-4 py-2 md:bg-white/10">
+          <p className="text-base sm:text-lg font-semibold text-white">
+            {stat.value}
+          </p>
+          <p className="text-white/80">{stat.label}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+        {/* _______________________________________________________________ */}
 
         {/* Mission */}
-        <section id="mission" className="mt-10 bg-[#E6F3FF]/80 py-14 sm:py-16">
-          <div className="mx-auto max-w-5xl px-6">
-            <div className="max-w-3xl space-y-3">
-              <h2 className="text-2xl font-semibold tracking-tight text-slate-900">
-                A community-led charity for real equity work.
-              </h2>
-              <p className="text-sm leading-relaxed text-slate-700 sm:text-base">
-                Traditional philanthropy often leaves the most impacted people
-                out of the room. Hala Equity Heroes flips the script by moving
-                decisions, resources, and storytelling power into the hands of
-                community organizers, educators, caregivers, and youth leaders.
-              </p>
-            </div>
-            <div className="mt-8 grid gap-4 sm:grid-cols-3">
-              {pillars.map((pillar) => (
-                <div
-                  key={pillar.title}
-                  className="rounded-2xl border border-sky-100 bg-white/80 p-3 shadow-sm shadow-sky-200/60"
-                >
-                  <h3 className="text-[13px] font-semibold tracking-tight text-slate-900">
-                    {pillar.title}
-                  </h3>
-                  <p className="mt-1 text-[11px] leading-relaxed text-slate-700">
-                    {pillar.body}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+      
 
-        {/* How it works */}
-        <section
-          id="how-it-works"
-          className="mt-10 bg-gradient-to-b from-[#E6F3FF] via-[#DBEAFE] to-[#C7D2FE] py-14 sm:py-16"
-        >
-          <div className="mx-auto max-w-5xl px-6">
-            <div className="max-w-3xl space-y-3">
-              <h2 className="text-2xl font-semibold tracking-tight text-slate-900">
-                How Hala Equity Heroes works.
-              </h2>
-              <p className="text-sm leading-relaxed text-slate-700 sm:text-base">
-                We keep the model simple, transparent, and accountable, so you
-                always know how your contribution is moving the needle.
-              </p>
-            </div>
-            <ol className="mt-6 space-y-4 text-sm text-slate-900">
-              <li className="flex gap-4">
-                <span className="mt-1 h-7 w-7 shrink-0 rounded-full bg-emerald-400 text-center text-sm font-semibold text-zinc-900">
-                  1
-                </span>
-                <div>
-                  <p className="font-semibold">Listen to local priorities.</p>
-                  <p className="mt-1 text-xs text-slate-700">
-                    Community partners share what equity work looks like where
-                    they live – from mutual aid to legal clinics to
-                    storytelling collectives.
-                  </p>
-                </div>
-              </li>
-              <li className="flex gap-4">
-                <span className="mt-1 h-7 w-7 shrink-0 rounded-full bg-emerald-400 text-center text-sm font-semibold text-zinc-900">
-                  2
-                </span>
-                <div>
-                  <p className="font-semibold">Match heroes to initiatives.</p>
-                  <p className="mt-1 text-xs text-slate-700">
-                    Volunteers, donors, and circles choose projects that align
-                    with their values, capacity, and skills.
-                  </p>
-                </div>
-              </li>
-              <li className="flex gap-4">
-                <span className="mt-1 h-7 w-7 shrink-0 rounded-full bg-emerald-400 text-center text-sm font-semibold text-zinc-900">
-                  3
-                </span>
-                <div>
-                  <p className="font-semibold">Fund, build, and report back.</p>
-                  <p className="mt-1 text-xs text-slate-700">
-                    Resources flow directly to partners, with regular updates,
-                    impact notes, and space for reflection shared back to the
-                    community.
-                  </p>
-                </div>
-              </li>
-            </ol>
-          </div>
-        </section>
+<section id="mission" className="relative mt-10 bg-gradient-to-b from-[#E6F3FF] to-[#DBEAFE] py-20 sm:py-24 overflow-hidden">
+  {/* Animated background orbs */}
+  <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <motion.div
+      className="absolute top-20 left-10 w-72 h-72 bg-emerald-400/10 rounded-full blur-3xl"
+      animate={{
+        x: [0, 100, 0],
+        y: [0, 50, 0],
+      }}
+      transition={{
+        duration: 20,
+        repeat: Infinity,
+        ease: "easeInOut"
+      }}
+    />
+    <motion.div
+      className="absolute bottom-20 right-10 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl"
+      animate={{
+        x: [0, -80, 0],
+        y: [0, -60, 0],
+      }}
+      transition={{
+        duration: 25,
+        repeat: Infinity,
+        ease: "easeInOut"
+      }}
+    />
+  </div>
 
-        {/* Initiatives */}
-        <section
-          id="initiatives"
-          className="mt-10 bg-gradient-to-b from-[#C7D2FE] via-[#6366F1] to-[#312E81] py-14 text-slate-50 shadow-[0_20px_80px_rgba(15,23,42,0.6)] sm:py-16"
+  <div className="relative mx-auto max-w-6xl px-6">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.6 }}
+      className="max-w-3xl space-y-4"
+    >
+      <motion.div
+        initial={{ width: 0 }}
+        whileInView={{ width: "4rem" }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="h-1 bg-emerald-400 rounded-full"
+      />
+      <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+        A community-led charity for real equity work.
+      </h2>
+      <p className="text-base md:text-lg leading-relaxed text-slate-700">
+        Traditional philanthropy often leaves the most impacted people
+        out of the room. Hala Equity Heroes flips the script by moving
+        decisions, resources, and storytelling power into the hands of
+        community organizers, educators, caregivers, and youth leaders.
+      </p>
+    </motion.div>
+
+    <div className="mt-12 grid gap-6 sm:grid-cols-3">
+      {pillars.map((pillar, index) => (
+        <motion.div
+          key={pillar.title}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+          whileHover={{ 
+            y: -8,
+            transition: { duration: 0.3 }
+          }}
+          className="group relative"
         >
-          <div className="mx-auto max-w-5xl px-6">
-            <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
-              <div className="max-w-2xl space-y-3">
-                <h2 className="text-2xl font-semibold tracking-tight">
-                  Current community initiatives.
-                </h2>
-                <p className="text-sm leading-relaxed text-indigo-100 sm:text-base">
-                  These are a few of the live areas where Heroes are currently
-                  showing up — with funding, mentorship, and hands-on builds.
+          <div className="absolute inset-0 bg-gradient-to-br from-emerald-400/20 to-blue-400/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="relative h-full rounded-2xl border border-sky-100 bg-white/90 backdrop-blur-sm p-6 shadow-lg hover:shadow-2xl transition-all duration-500">
+            <div className="flex items-start gap-4">
+              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-500 flex items-center justify-center shadow-lg">
+                <span className="text-2xl">
+                  {index === 0 ? "⚖️" : index === 1 ? "🔍" : "🦸"}
+                </span>
+              </div>
+              <div className="flex-1">
+                <h3 className="text-lg font-bold tracking-tight text-slate-900 mb-2">
+                  {pillar.title}
+                </h3>
+                <p className="text-sm leading-relaxed text-slate-700">
+                  {pillar.body}
                 </p>
               </div>
-              <p className="text-xs text-indigo-100/80">
-                New initiatives are proposed by community partners on a rolling
-                basis.
-              </p>
-            </div>
-            <div className="mt-8 grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:gap-6">
-              {initiatives.map((item) => (
-                <article
-                  key={item.title}
-                  className="flex flex-col gap-2 rounded-2xl border border-indigo-200/40 bg-indigo-900/50 p-3 backdrop-blur-sm"
-                >
-                  <div className="flex items-center gap-2">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-400/15 ring-1 ring-emerald-300/70">
-                      <Image
-                        src={item.icon}
-                        alt=""
-                        width={16}
-                        height={16}
-                        className="opacity-95"
-                      />
-                    </div>
-                    <h3 className="text-[13px] font-semibold tracking-tight text-slate-50">
-                      {item.title}
-                    </h3>
-                  </div>
-                  <p className="text-[11px] leading-relaxed text-indigo-100">
-                    {item.body}
-                  </p>
-                </article>
-              ))}
             </div>
           </div>
-        </section>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
+        {/* How it works */}
+      {/* How it works */}
+<section
+  id="how-it-works"
+  className="relative mt-10 bg-gradient-to-b from-[#DBEAFE] via-[#C7D2FE] to-[#A5B4FC] py-20 sm:py-24"
+>
+  <div className="mx-auto max-w-5xl px-6">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="max-w-3xl space-y-4"
+    >
+      <motion.div
+        initial={{ width: 0 }}
+        whileInView={{ width: "4rem" }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="h-1 bg-emerald-400 rounded-full"
+      />
+      <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+        How Hala Equity Heroes works.
+      </h2>
+      <p className="text-base md:text-lg leading-relaxed text-slate-700">
+        We keep the model simple, transparent, and accountable, so you
+        always know how your contribution is moving the needle.
+      </p>
+    </motion.div>
+
+    <div className="mt-12 space-y-8">
+      {[
+        {
+          num: "1",
+          title: "Listen to local priorities.",
+          desc: "Community partners share what equity work looks like where they live – from mutual aid to legal clinics to storytelling collectives.",
+          icon: "👂"
+        },
+        {
+          num: "2",
+          title: "Match heroes to initiatives.",
+          desc: "Volunteers, donors, and circles choose projects that align with their values, capacity, and skills.",
+          icon: "🤝"
+        },
+        {
+          num: "3",
+          title: "Fund, build, and report back.",
+          desc: "Resources flow directly to partners, with regular updates, impact notes, and space for reflection shared back to the community.",
+          icon: "📊"
+        }
+      ].map((step, index) => (
+        <motion.div
+          key={step.num}
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, delay: index * 0.15 }}
+          className="group"
+        >
+          <div className="flex gap-6 items-start">
+            <motion.div
+              whileHover={{ scale: 1.1, rotate: 360 }}
+              transition={{ duration: 0.6 }}
+              className="flex-shrink-0 relative"
+            >
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-500 flex items-center justify-center text-2xl font-bold text-white shadow-lg group-hover:shadow-2xl transition-shadow duration-300">
+                {step.num}
+              </div>
+              <motion.div
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.15 + 0.3 }}
+                className="absolute -top-2 -right-2 text-3xl"
+              >
+                {step.icon}
+              </motion.div>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ x: 10 }}
+              transition={{ duration: 0.3 }}
+              className="flex-1 bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-indigo-100"
+            >
+              <h3 className="text-xl font-bold text-slate-900 mb-2">
+                {step.title}
+              </h3>
+              <p className="text-sm text-slate-700 leading-relaxed">
+                {step.desc}
+              </p>
+            </motion.div>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+
+
+        {/* Initiatives */}
+        {/* Initiatives */}
+<section
+  id="initiatives"
+  className="relative mt-10 bg-gradient-to-b from-[#6366F1] via-[#4F46E5] to-[#4338CA] py-20 sm:py-24 text-slate-50 overflow-hidden"
+>
+  {/* Animated grid background */}
+  <div className="absolute inset-0 opacity-10">
+    <div className="absolute inset-0" style={{
+      backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                       linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
+      backgroundSize: '50px 50px'
+    }} />
+  </div>
+
+  <div className="relative mx-auto max-w-6xl px-6">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="space-y-4 text-center mb-12"
+    >
+      <motion.div
+        initial={{ width: 0 }}
+        whileInView={{ width: "4rem" }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="h-1 bg-emerald-400 rounded-full mx-auto"
+      />
+      <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+        Current community initiatives.
+      </h2>
+      <p className="text-base md:text-lg leading-relaxed text-indigo-100 max-w-2xl mx-auto">
+        These are a few of the live areas where Heroes are currently
+        showing up — with funding, mentorship, and hands-on builds.
+      </p>
+    </motion.div>
+
+    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      {initiatives.map((item, index) => (
+        <motion.article
+          key={item.title}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+          whileHover={{ 
+            y: -12,
+            rotateY: 5,
+            rotateX: 5,
+          }}
+          style={{ transformStyle: 'preserve-3d' }}
+          className="group relative cursor-pointer"
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-emerald-400/30 to-blue-400/30 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          
+          <div className="relative h-full flex flex-col gap-4 rounded-3xl border border-indigo-300/30 bg-indigo-900/60 backdrop-blur-sm p-6 shadow-xl hover:shadow-2xl transition-all duration-500">
+            <motion.div
+              whileHover={{ scale: 1.2, rotate: 360 }}
+              transition={{ duration: 0.6 }}
+              className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 to-emerald-500 shadow-lg"
+            >
+              <Image
+                src={item.icon}
+                alt=""
+                width={32}
+                height={32}
+                className="opacity-95 brightness-0 invert"
+              />
+            </motion.div>
+            
+            <div className="flex-1">
+              <h3 className="text-xl font-bold tracking-tight text-slate-50 mb-3">
+                {item.title}
+              </h3>
+              <p className="text-sm leading-relaxed text-indigo-100">
+                {item.body}
+              </p>
+            </div>
+
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="mt-4 w-full rounded-full bg-emerald-400/20 border border-emerald-400/50 px-4 py-2 text-sm font-semibold text-emerald-300 hover:bg-emerald-400/30 transition-colors duration-300"
+            >
+              Learn more →
+            </motion.button>
+          </div>
+        </motion.article>
+      ))}
+    </div>
+  </div>
+</section>
 
         {/* Join */}
         <section
