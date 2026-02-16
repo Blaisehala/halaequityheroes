@@ -49,12 +49,21 @@ export default function Navigation() {
 
             {/* CTA Buttons */}
             <div className="hidden md:flex items-center gap-3">
+
+            <Link
+                href="/mission"
+                className="px-4 py-2 text-sm font-medium text-white border border-white/30 rounded-full hover:bg-white/10 transition-colors duration-200"
+              >
+                mission
+              </Link>
               <Link
                 href="/volunteer"
                 className="px-4 py-2 text-sm font-medium text-white border border-white/30 rounded-full hover:bg-white/10 transition-colors duration-200"
               >
                 Volunteer
               </Link>
+
+
               <Link
                 href="/donate"
                 className="px-4 py-2 text-sm font-medium text-slate-900 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full hover:from-amber-500 hover:to-orange-600 transition-all duration-200 shadow-lg"
