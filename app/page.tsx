@@ -1,50 +1,16 @@
 'use client'
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
-// import { HeroCarousel } from "./components/HeroCarousel";
 import CurvedCarousel from "./components/CurvedCarousel";
-import VideoModal from "./components/VideoModal"; // Add this
-import { useState } from 'react'; 
-
+import ImpactPathways from "./components/ImpactPathways";
+import WhyWeCare from "./components/WhyWeCare";
 
 const stats = [
   { label: "Local chapters", value: "24+" },
   { label: "Volunteer hours", value: "18K+" },
   { label: "Funds directed", value: "$1.2M" },
-];
-
-const pillars = [
-  {
-    title: "Equity first",
-    body: "We center communities who are closest to the challenge and furthest from resources.",
-  },
-  {
-    title: "Radical transparency",
-    body: "From intake to impact, every decision and dollar is traceable.",
-  },
-  {
-    title: "Everyday heroes",
-    body: "You do not need a foundation to change the world. You just need to start.",
-  },
-];
-
-const initiatives = [
-  {
-    icon: "/globe.svg",
-    title: "Community Equity Funds",
-    body: "Micro‑grants to grassroots groups led by women, youth, and marginalized communities.",
-  },
-  {
-    icon: "/window.svg",
-    title: "Skills for Justice",
-    body: "Designers, engineers, and operators volunteering their craft to power local campaigns.",
-  },
-  {
-    icon: "/file.svg",
-    title: "Stories that Shift Power",
-    body: "Storytelling labs that amplify lived experience and challenge the status quo.",
-  },
 ];
 
 const waysToJoin = [
@@ -66,30 +32,14 @@ const waysToJoin = [
 ];
 
 export default function Home() {
-  const [isVideoOpen, setIsVideoOpen] = useState(false)
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0c2340] via-[#E6F3FF] to-[#15162b] text-slate-900">
-      {/* Video Modal */}
-      <VideoModal 
-        isOpen={isVideoOpen} 
-        onClose={() => setIsVideoOpen(false)}
-        videoId="dQw4w9WgXcQ" // Replace with your YouTube video ID
-      />
-      
-
-
       <main className="pt-16">
         {/* Hero with Curved Carousel */}
-
-       {/* Hero with Curved Carousel */}
-{/* Hero with Curved Carousel */}
 <section className="relative min-h-[85vh] sm:min-h-[90vh] overflow-hidden bg-[#0c2340] text-white pb-8">
-  {/* Mobile: Lighter overlay - only at top and bottom */}
   <div className="absolute inset-0 bg-gradient-to-b from-[#0c2340]/90 via-transparent to-[#0c2340]/80 z-20 pointer-events-none md:hidden" />
-  
-  {/* Mobile: Text box at top */}
+
   <div className="relative z-30 mx-auto max-w-6xl px-4 pt-12 sm:pt-16 md:hidden">
-  
     <div className="bg-[#0c2340]/70 backdrop-blur-sm rounded-2xl p-2">
     <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight text-center mb-6">
       Changing Lives
@@ -102,12 +52,10 @@ export default function Home() {
     </div>
   </div>
 
-  {/* Carousel Container */}
   <div className="absolute inset-0 pt-[240px] sm:pt-[200px] md:pt-8 lg:pt-4">
     <CurvedCarousel />
   </div>
 
-  {/* Desktop: Content below carousel */}
   <div className="relative z-30 mx-auto max-w-6xl px-4 pt-[400px] sm:pt-[380px] md:pt-[380px] lg:pt-[360px] hidden md:block">
     <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight text-center mb-6">
       Changing Lives
@@ -119,7 +67,6 @@ export default function Home() {
     </p>
   </div>
 
-  {/* Stats - Moved down more on mobile, clear of images */}
   <div className="relative z-30 mx-auto max-w-6xl px-4 sm:px-6 mt-[520px] sm:mt-[460px] md:mt-12">
     <div className="flex flex-wrap gap-4 sm:gap-6 text-xs justify-center md:justify-start">
       {stats.map((stat) => (
@@ -134,358 +81,126 @@ export default function Home() {
   </div>
 </section>
 
-        {/* _______________________________________________________________ */}
-
         {/* Mission */}
-      
-
-<section id="mission" className="relative mt-10 bg-gradient-to-b from-[#E6F3FF] to-[#DBEAFE] py-20 sm:py-24 overflow-hidden">
-  {/* Animated background orbs */}
-  <div className="absolute inset-0 overflow-hidden pointer-events-none">
-    <motion.div
-      className="absolute top-20 left-10 w-72 h-72 bg-emerald-400/10 rounded-full blur-3xl"
-      animate={{
-        x: [0, 100, 0],
-        y: [0, 50, 0],
-      }}
-      transition={{
-        duration: 20,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }}
-    />
-    <motion.div
-      className="absolute bottom-20 right-10 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl"
-      animate={{
-        x: [0, -80, 0],
-        y: [0, -60, 0],
-      }}
-      transition={{
-        duration: 25,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }}
-    />
+<section id="mission" className="relative mt-0 overflow-hidden bg-white pb-28 pt-10 sm:pb-32 sm:pt-14">
+  <div className="pointer-events-none absolute inset-x-0 top-[18%] overflow-hidden" aria-hidden>
+    <span className="block select-none pl-[1%] font-semibold leading-none tracking-tight text-[#d4e1eb] text-[min(44vw,30rem)]">
+      1978
+    </span>
   </div>
 
-  <div className="relative mx-auto max-w-6xl px-6">
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.6 }}
-      className="max-w-3xl space-y-4"
+  <div className="relative z-10 mx-auto flex max-w-6xl items-start gap-4 px-4 sm:px-8">
+    <Link
+      href="/donate"
+      aria-label="Donate"
+      className="group relative mt-2 flex h-28 w-28 shrink-0 items-center justify-center sm:h-32 sm:w-32 lg:h-36 lg:w-36"
     >
-      <motion.div
-        initial={{ width: 0 }}
-        whileInView={{ width: "4rem" }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        className="h-1 bg-emerald-400 rounded-full"
-      />
-      <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
-        A community-led charity for real equity work.
-      </h2>
-      <p className="text-base md:text-lg leading-relaxed text-slate-700">
-        Traditional philanthropy often leaves the most impacted people
-        out of the room. Hala Equity Heroes flips the script by moving
-        decisions, resources, and storytelling power into the hands of
-        community organizers, educators, caregivers, and youth leaders.
-      </p>
-    </motion.div>
-
-    <div className="mt-12 grid gap-6 sm:grid-cols-3">
-      {pillars.map((pillar, index) => (
-        <motion.div
-          key={pillar.title}
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.5, delay: index * 0.1 }}
-          whileHover={{ 
-            y: -8,
-            transition: { duration: 0.3 }
-          }}
-          className="group relative"
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-emerald-400/20 to-blue-400/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-          <div className="relative h-full rounded-2xl border border-sky-100 bg-white/90 backdrop-blur-sm p-6 shadow-lg hover:shadow-2xl transition-all duration-500">
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-500 flex items-center justify-center shadow-lg">
-                <span className="text-2xl">
-                  {index === 0 ? "⚖️" : index === 1 ? "🔍" : "🦸"}
-                </span>
-              </div>
-              <div className="flex-1">
-                <h3 className="text-lg font-bold tracking-tight text-slate-900 mb-2">
-                  {pillar.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-slate-700">
-                  {pillar.body}
-                </p>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      ))}
-    </div>
-  </div>
-</section>
-
-        {/* How it works */}
-      {/* How it works */}
-<section
-  id="how-it-works"
-  className="relative mt-10 bg-gradient-to-b from-[#DBEAFE] via-[#C7D2FE] to-[#A5B4FC] py-20 sm:py-24 pb-32"
->
-  <div className="mx-auto max-w-5xl px-6">
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
-      className="max-w-3xl space-y-4"
-    >
-      <motion.div
-        initial={{ width: 0 }}
-        whileInView={{ width: "4rem" }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        className="h-1 bg-emerald-400 rounded-full"
-      />
-      <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
-        How Hala Equity Heroes works.
-      </h2>
-      <p className="text-base md:text-lg leading-relaxed text-slate-700">
-        We keep the model simple, transparent, and accountable, so you
-        always know how your contribution is moving the needle.
-      </p>
-    </motion.div>
-
-    <div className="mt-12 space-y-8">
-      {[
-        {
-          num: "1",
-          title: "Listen to local priorities.",
-          desc: "Community partners share what equity work looks like where they live – from mutual aid to legal clinics to storytelling collectives.",
-          icon: "👂"
-        },
-        {
-          num: "2",
-          title: "Match heroes to initiatives.",
-          desc: "Volunteers, donors, and circles choose projects that align with their values, capacity, and skills.",
-          icon: "🤝"
-        },
-        {
-          num: "3",
-          title: "Fund, build, and report back.",
-          desc: "Resources flow directly to partners, with regular updates, impact notes, and space for reflection shared back to the community.",
-          icon: "📊"
-        }
-      ].map((step, index) => (
-        <motion.div
-          key={step.num}
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, delay: index * 0.15 }}
-          className="group"
-        >
-          <div className="flex gap-6 items-start">
-            <motion.div
-              whileHover={{ scale: 1.1, rotate: 360 }}
-              transition={{ duration: 0.6 }}
-              className="flex-shrink-0 relative"
-            >
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-500 flex items-center justify-center text-2xl font-bold text-white shadow-lg group-hover:shadow-2xl transition-shadow duration-300">
-                {step.num}
-              </div>
-              <motion.div
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.15 + 0.3 }}
-                className="absolute -top-2 -right-2 text-3xl"
-              >
-                {step.icon}
-              </motion.div>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ x: 10 }}
-              transition={{ duration: 0.3 }}
-              className="flex-1 bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-indigo-100"
-            >
-              <h3 className="text-xl font-bold text-slate-900 mb-2">
-                {step.title}
-              </h3>
-              <p className="text-sm text-slate-700 leading-relaxed">
-                {step.desc}
-              </p>
-            </motion.div>
-          </div>
-        </motion.div>
-      ))}
-    </div>
-  </div>
-</section>
-
-
-
-
-        {/* Initiatives */}
-        {/* Initiatives */}
-{/* Initiatives - Slides up to cover previous section */}
-{/* Initiatives - Slides up to cover previous section */}
-{/* Initiatives - Seamless overlay with bordered content */}
-<section
-  id="initiatives"
-  className="relative z-30 min-h-screen pt-20 pb-20 sm:pb-24 text-white overflow-hidden"
->
-  {/* Background Image with Dark Overlay */}
-  <div className="absolute inset-0">
-    <div 
-      className="absolute inset-0 bg-cover bg-center"
-      style={{
-        backgroundImage: 'url(/images/hero3.jpg)',
-      }}
-    />
-    <div className="absolute inset-0 bg-gradient-to-b from-slate-900/90 via-slate-800/85 to-slate-900/90" />
-  </div>
-
-  {/* Seamless Top Edge - No wave, just gradient blend */}
-  <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#A5B4FC] to-transparent pointer-events-none" />
-
-  {/* Subtle grid overlay */}
-  <div className="absolute inset-0 opacity-5">
-    <div className="absolute inset-0" style={{
-      backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-      backgroundSize: '50px 50px'
-    }} />
-  </div>
-
-  {/* Bordered Content Container */}
-  <div className="relative mx-auto max-w-6xl px-6 mt-16">
-    <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8 }}
-      className="border-2 border-white/20 rounded-3xl p-8 sm:p-12 backdrop-blur-sm bg-slate-900/30"
-    >
-      {/* Header with Play Button */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className="space-y-6 text-center mb-16"
+      <svg
+        viewBox="0 0 200 200"
+        className="absolute inset-0 h-full w-full animate-[spin_22s_linear_infinite]"
       >
-        {/* Play Button */}
-        <motion.button
-          onClick={() => setIsVideoOpen(true)}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          className="mx-auto w-20 h-20 rounded-full bg-gradient-to-br from-pink-400 to-rose-500 flex items-center justify-center shadow-2xl hover:shadow-pink-500/50 transition-all duration-300 group relative"
-        >
-          <span className="absolute inset-0 rounded-full bg-pink-400 animate-ping opacity-20" />
-          <svg className="relative w-8 h-8 text-white ml-1 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M8 5v14l11-7z" />
-          </svg>
-        </motion.button>
-
-        <div>
-          <motion.div
-            initial={{ width: 0 }}
-            whileInView={{ width: "4rem" }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="h-1 bg-pink-400 rounded-full mx-auto mb-6"
+        <defs>
+          <path
+            id="donate-circle"
+            d="M 100,100 m -72,0 a 72,72 0 1,1 144,0 a 72,72 0 1,1 -144,0"
           />
-          
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-tight">
-            <span className="block">EMPOWERING</span>
-            <span className="block text-pink-300 italic font-light">People</span>
-            <span className="block">THROUGH</span>
-            <span className="block">COMPREHENSIVE</span>
-            <span className="block">PROGRAMS</span>
+        </defs>
+        <text fill="#5ec8f0" fontSize="14" fontWeight="600">
+          <textPath href="#donate-circle">
+            DONATE&nbsp;&nbsp;&nbsp;DONATE&nbsp;&nbsp;&nbsp;DONATE&nbsp;&nbsp;&nbsp;DONATE&nbsp;&nbsp;&nbsp;
+          </textPath>
+        </text>
+      </svg>
+      <span className="text-3xl font-light text-amber-400 transition group-hover:scale-110 sm:text-4xl">
+        +
+      </span>
+    </Link>
+
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="mx-auto max-w-md pt-2 text-center sm:pt-4"
+    >
+      <p className="text-sm font-semibold leading-snug text-[#0c2340] sm:text-[15px]">
+        Over 90% of lasting change starts in community. Our
+        circles are the best way to reach people in great need.
+      </p>
+      <p className="mt-3 text-[11px] leading-relaxed text-slate-500 sm:text-xs">
+        If you want to join a volunteer community to help us offer a
+        helping hand, consider making a donation. You can join the rest
+        of us that care. Your donation can be given now and in the future.
+      </p>
+      <div className="mt-5 flex items-center justify-center gap-3">
+        <Link
+          href="/volunteer"
+          className="inline-flex h-8 items-center justify-center rounded-full border border-slate-300 bg-white px-5 text-[11px] font-medium text-slate-600 transition hover:border-slate-400 hover:text-slate-800"
+        >
+          volunteer
+        </Link>
+        <Link
+          href="/donate"
+          className="inline-flex h-8 items-center justify-center rounded-full bg-amber-500 px-6 text-[11px] font-semibold text-white shadow-sm transition hover:bg-amber-400"
+        >
+          donate
+        </Link>
+      </div>
+    </motion.div>
+  </div>
+
+  <div className="relative z-10 mt-20 sm:mt-28">
+    <div className="bg-[#1B5580] text-white">
+      <div className="mx-auto grid max-w-6xl items-center gap-8 px-6 py-8 sm:px-10 lg:grid-cols-[minmax(0,1fr)_240px_minmax(0,1.35fr)] lg:gap-10 lg:py-9">
+        <div>
+          <h2 className="text-lg font-semibold leading-snug tracking-tight sm:text-xl">
+            Serving those in need since 1978
           </h2>
-          
-          <p className="text-lg md:text-xl leading-relaxed text-white/95 max-w-2xl mx-auto">
-            These programs are committed to giving every person, regardless of circumstances, 
-            an opportunity to succeed in their community and beyond.
+          <p className="mt-3 text-xs leading-relaxed text-white/80">
+            Globally, billions still lack access to safe systems of care.
+            Children and families wait for resources that never arrive
+            through traditional philanthropy.
           </p>
         </div>
-      </motion.div>
 
-      {/* Initiative Cards */}
-      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 mb-12">
-        {initiatives.map((item, index) => (
-          <motion.article
-            key={item.title}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            whileHover={{ 
-              y: -12,
-              rotateY: 5,
-              rotateX: 5,
-            }}
-            style={{ transformStyle: 'preserve-3d' }}
-            className="group relative cursor-pointer"
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-pink-400/30 to-purple-400/30 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            
-            <div className="relative h-full flex flex-col gap-4 rounded-3xl border border-white/30 bg-slate-900/70 backdrop-blur-md p-6 shadow-xl hover:shadow-2xl transition-all duration-500">
-              <motion.div
-                whileHover={{ scale: 1.2, rotate: 360 }}
-                transition={{ duration: 0.6 }}
-                className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-pink-400 to-rose-500 shadow-lg"
-              >
-                <Image
-                  src={item.icon}
-                  alt=""
-                  width={32}
-                  height={32}
-                  className="opacity-95 brightness-0 invert"
-                />
-              </motion.div>
-              
-              <div className="flex-1">
-                <h3 className="text-xl font-bold tracking-tight text-white mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-white/90">
-                  {item.body}
-                </p>
-              </div>
+        <div className="relative mx-auto w-[220px] lg:w-[240px]">
+          <div className="relative aspect-[3/4] w-full overflow-hidden shadow-2xl lg:-mb-20 lg:-mt-14">
+            <Image
+              src="/images/hero2.jpg"
+              alt="Caregiver with a child"
+              fill
+              className="object-cover"
+              sizes="240px"
+            />
+          </div>
+          <div className="absolute -bottom-6 -right-10 h-[72px] w-[72px] overflow-hidden shadow-lg sm:h-20 sm:w-20 lg:-bottom-8 lg:-right-14">
+            <Image
+              src="/images/hero5.jpg"
+              alt="Community member"
+              fill
+              className="object-cover"
+              sizes="80px"
+            />
+          </div>
+        </div>
 
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="mt-4 w-full rounded-full bg-pink-400/20 border border-pink-400/50 px-4 py-2 text-sm font-semibold text-pink-200 hover:bg-pink-400/30 transition-colors duration-300"
-              >
-                Learn more →
-              </motion.button>
-            </div>
-          </motion.article>
-        ))}
+        <div>
+          <p className="text-xs leading-relaxed text-white/90 sm:text-[13px]">
+            We are carried by a family of volunteers from around the world,
+            from our organizers, nurses, and mentors to our volunteer
+            teachers, technicians, and those who are just ready to start.
+            Join us as a volunteer and help bring equity and care to people
+            in communities far from resources.
+          </p>
+        </div>
       </div>
-
-      {/* Bottom text */}
-      <motion.p
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.6 }}
-        className="text-center text-sm text-white/70"
-      >
-        New initiatives are proposed by community partners on a rolling basis.
-      </motion.p>
-    </motion.div>
+    </div>
   </div>
 </section>
+
+        <ImpactPathways />
+
+        <WhyWeCare />
 
         {/* Join */}
         <section

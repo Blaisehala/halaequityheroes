@@ -18,7 +18,7 @@ export default function Navigation() {
   return (
     <>
       {/* Desktop Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0c2340]/95 backdrop-blur-md border-b border-white/10">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#112540]/95 backdrop-blur-md border-b border-white/10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
@@ -124,7 +124,7 @@ export default function Navigation() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed top-16 right-0 bottom-0 w-64 bg-[#0c2340] border-l border-white/10 z-40 md:hidden overflow-y-auto"
+              className="fixed top-16 right-0 bottom-0 w-64 bg-[#112540] border-l border-white/10 z-40 md:hidden overflow-y-auto"
             >
               <div className="p-6 space-y-6">
                 {/* Navigation Links */}
