@@ -92,7 +92,7 @@ export default function CurvedCarousel() {
             transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
             onClick={() => rotateImages('right')}
           >
-            <div className="relative w-full h-full shadow-2xl rounded-lg overflow-hidden border-4 md:border-[6px] border-white/95 hover:border-emerald-400/90 transition-colors duration-300">
+            <div className="relative w-full h-full shadow-2xl rounded-lg overflow-hidden border-4 md:border-[6px] border-white/95 hover:border-brand-sky/90 transition-colors duration-300">
               <Image
                 src={img.src}
                 alt={img.alt}

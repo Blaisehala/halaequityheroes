@@ -58,7 +58,7 @@ export default function VideoModal({ isOpen, onClose, videoId }: VideoModalProps
                 whileHover={{ scale: 1.1, rotate: 90 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={onClose}
-                className="absolute -top-4 -right-4 z-10 w-12 h-12 rounded-full bg-gradient-to-br from-pink-400 to-rose-500 flex items-center justify-center shadow-2xl hover:shadow-pink-500/50 transition-all duration-300"
+                className="absolute -top-4 -right-4 z-10 w-12 h-12 rounded-full bg-gradient-to-br from-brand-sky to-brand-blue flex items-center justify-center shadow-2xl hover:shadow-brand-sky/50 transition-all duration-300"
               >
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -66,7 +66,7 @@ export default function VideoModal({ isOpen, onClose, videoId }: VideoModalProps
               </motion.button>
 
               {/* Decorative glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-pink-500/20 via-transparent to-purple-500/20 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-br from-brand-sky/20 via-transparent to-brand-blue/20 pointer-events-none" />
 
               {/* YouTube iframe */}
               <iframe
@@ -85,7 +85,7 @@ export default function VideoModal({ isOpen, onClose, videoId }: VideoModalProps
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2 }}
               >
-                <div className="absolute inset-0 rounded-2xl border-2 border-pink-400/30" />
+                <div className="absolute inset-0 rounded-2xl border-2 border-brand-sky/30" />
               </motion.div>
             </motion.div>
           </div>

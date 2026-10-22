@@ -88,7 +88,7 @@ export default function ImpactPathways() {
   return (
     <section
       id="how-it-works"
-      className="relative overflow-x-clip bg-[#F4EFE6] py-20 sm:py-24 lg:py-28"
+      className="relative overflow-x-clip bg-brand-sky-tint py-20 sm:py-24 lg:py-28"
     >
       <div className="mx-auto grid max-w-7xl items-start gap-12 px-5 sm:px-8 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-6 xl:gap-10">
         <motion.div
@@ -98,28 +98,28 @@ export default function ImpactPathways() {
           transition={{ duration: reduceMotion ? 0 : 0.55, ease: 'easeOut' }}
           className="relative z-10 max-w-xl"
         >
-          <p className="text-[11px] font-semibold tracking-[0.28em] text-[#0c2340]/70">
+          <p className="text-[11px] font-semibold tracking-[0.28em] text-brand-navy/70">
             FOR CHILDREN LIVING BEYOND THE PAIN
           </p>
 
-          <h2 className="mt-5 text-[2.35rem] font-semibold leading-[1.05] tracking-tight text-[#0c2340] sm:text-5xl lg:text-[3.35rem]">
+          <h2 className="mt-5 text-[2.35rem] font-semibold leading-[1.05] tracking-tight text-brand-navy sm:text-5xl lg:text-[3.35rem]">
             Every Child Deserves
             <span
-              className={`${instrumentSerif.className} mt-1 block text-[2.4rem] italic font-normal leading-[1.08] text-[#0c2340] sm:text-5xl lg:text-[3.55rem]`}
+              className={`${instrumentSerif.className} mt-1 block text-[2.4rem] italic font-normal leading-[1.08] text-brand-navy sm:text-5xl lg:text-[3.55rem]`}
             >
               More Than a Diagnosis.
             </span>
           </h2>
 
-          <p className="mt-6 max-w-md text-sm leading-relaxed text-[#0c2340]/75 sm:text-[15px]">
+          <p className="mt-6 max-w-md text-sm leading-relaxed text-brand-navy/75 sm:text-[15px]">
             Behind every sickle cell diagnosis is a child with dreams, a family
             carrying uncertainty, and a community that can choose to show up.
           </p>
 
-          <div className="mt-10 max-w-md border border-[#0c2340]/10 bg-white p-4 shadow-[0_18px_50px_rgba(12,35,64,0.08)] sm:p-5">
+          <div className="mt-10 max-w-md border border-brand-navy/10 bg-white p-4 shadow-[0_18px_50px_rgba(12,35,64,0.08)] sm:p-5">
             <h3
               id="pathways-heading"
-              className="text-[11px] font-semibold tracking-[0.22em] text-[#0c2340]/70"
+              className="text-[11px] font-semibold tracking-[0.22em] text-brand-navy/70"
             >
               HOW WILL YOU SHOW UP?
             </h3>
@@ -152,10 +152,10 @@ export default function ImpactPathways() {
                         selectAt((index - 1 + pathways.length) % pathways.length)
                       }
                     }}
-                    className={`min-h-[92px] border px-3 py-3 text-left transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0c2340] ${
+                    className={`min-h-[92px] border px-3 py-3 text-left transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-navy ${
                       isSelected
-                        ? 'border-amber-400 bg-amber-400 text-[#0c2340]'
-                        : 'border-transparent bg-[#EFEBE3] text-[#0c2340] hover:bg-[#E7E1D6]'
+                        ? 'border-brand-blue bg-brand-blue text-white'
+                        : 'border-transparent bg-brand-sky-tint-deep text-brand-navy hover:bg-brand-sky-tint-deeper'
                     }`}
                   >
                     <span className="block text-[11px] font-semibold uppercase tracking-[0.12em]">
@@ -163,7 +163,7 @@ export default function ImpactPathways() {
                     </span>
                     <span
                       className={`mt-1.5 block text-[11px] leading-relaxed ${
-                        isSelected ? 'text-[#0c2340]/80' : 'text-[#0c2340]/65'
+                        isSelected ? 'text-brand-navy/80' : 'text-brand-navy/65'
                       }`}
                     >
                       {path.body}
@@ -176,7 +176,7 @@ export default function ImpactPathways() {
             <Link
               href={active.href}
               aria-label={`Explore our impact: ${active.title}`}
-              className="mt-4 flex min-h-12 w-full items-center justify-center bg-amber-400 px-4 text-[12px] font-semibold tracking-[0.18em] text-[#0c2340] transition-colors duration-200 hover:bg-amber-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0c2340]"
+              className="mt-4 flex min-h-12 w-full items-center justify-center bg-brand-blue px-4 text-[12px] font-bold tracking-[0.18em] text-white transition-colors duration-200 hover:bg-brand-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-navy"
             >
               EXPLORE OUR IMPACT
             </Link>
@@ -212,7 +212,7 @@ export default function ImpactPathways() {
                 }}
                 className={`absolute overflow-hidden bg-white p-[7px] pb-8 shadow-[0_16px_40px_rgba(28,40,60,0.16)] ${photo.className}`}
               >
-                <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#ddd6c8]">
+                <div className="relative aspect-[4/5] w-full overflow-hidden bg-brand-sky-tint-deeper">
                   <Image
                     src={photo.src}
                     alt={photo.alt}

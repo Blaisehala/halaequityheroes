@@ -2,26 +2,54 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #334155;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-nunito), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: var(--font-instrument), Georgia, "Times New Roman", serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/*
+  Brand palette — the navy & blue theme of the original home page.
+  - navy:      primary dark — headings, navigation, page headers, dark sections
+  - blue:      secondary — feature bands, links, eyebrows, focus states
+  - sky:       light accent on dark backgrounds and decoration
+  - amber:     the single action colour — every primary button (navy text on it)
+  - sky-tint (and its deeper shades): pale blue for alternating sections,
+    highlights and call-to-action panels — the site uses no cream or beige
+  - green/teal: success ticks only
+*/
+@theme {
+  --color-brand-navy: #0c2340;
+  --color-brand-navy-deep: #071629;
+  --color-brand-blue: #1b5580;
+  --color-brand-sky: #5ec8f0;
+  --color-brand-sky-tint: #e6f3ff;
+  --color-brand-sky-tint-deep: #d4e1eb;
+  --color-brand-amber: #fbbf24;
+  --color-brand-amber-dark: #f59e0b;
+  --color-brand-green: #34d399;
+  --color-brand-teal: #059669;
+  --color-brand-ink: #334155;
+  --color-brand-sky-tint-deeper: #c3d6e6;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
+  font-family: var(--font-sans);
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+::selection {
+  background: var(--color-brand-sky-tint-deep);
+  color: var(--color-brand-navy);
 }

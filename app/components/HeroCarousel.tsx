@@ -49,7 +49,7 @@ export function HeroCarousel() {
           >
             <div className="relative h-full w-full max-w-4xl mx-auto min-h-[200px] rounded-xl overflow-hidden border border-white/20 bg-slate-700/60 shadow-2xl">
               {/* Placeholder: replace with <Image> or <img> when you add real images */}
-              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-slate-600/90 to-slate-800/90 text-white/90">
+              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-slate-600/90 to-brand-navy/90 text-white/90">
                 <span className="text-sm sm:text-base font-medium tracking-wide">
                   Image placeholder {i + 1}
                 </span>
@@ -63,7 +63,7 @@ export function HeroCarousel() {
       <button
         type="button"
         onClick={goPrev}
-        className="absolute left-2 top-1/2 z-10 -translate-y-1/2 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full border-2 border-white/60 bg-slate-900/40 text-white shadow-lg backdrop-blur-sm transition hover:border-white hover:bg-slate-800/60 focus:outline-none focus:ring-2 focus:ring-white/50"
+        className="absolute left-2 top-1/2 z-10 -translate-y-1/2 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full border-2 border-white/60 bg-brand-navy-deep/40 text-white shadow-lg backdrop-blur-sm transition hover:border-white hover:bg-brand-navy/60 focus:outline-none focus:ring-2 focus:ring-white/50"
         aria-label="Previous slide"
       >
         <svg className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -73,7 +73,7 @@ export function HeroCarousel() {
       <button
         type="button"
         onClick={goNext}
-        className="absolute right-2 top-1/2 z-10 -translate-y-1/2 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full border-2 border-white/60 bg-slate-900/40 text-white shadow-lg backdrop-blur-sm transition hover:border-white hover:bg-slate-800/60 focus:outline-none focus:ring-2 focus:ring-white/50"
+        className="absolute right-2 top-1/2 z-10 -translate-y-1/2 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full border-2 border-white/60 bg-brand-navy-deep/40 text-white shadow-lg backdrop-blur-sm transition hover:border-white hover:bg-brand-navy/60 focus:outline-none focus:ring-2 focus:ring-white/50"
         aria-label="Next slide"
       >
         <svg className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

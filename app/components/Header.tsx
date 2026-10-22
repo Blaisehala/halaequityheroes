@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-30 border-b border-white/10 bg-[#0c2340] backdrop-blur">
+    <header className="sticky top-0 z-30 border-b border-white/10 bg-brand-navy backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
         <Link href="/" className="flex items-center gap-2 text-white">
           <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border-2 border-white/80 text-sm font-bold">
@@ -38,7 +38,7 @@ export function Header() {
           </Link>
           <Link
             href="/donate"
-            className="inline-flex items-center justify-center rounded-full bg-amber-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-amber-600/30 transition hover:bg-amber-400"
+            className="inline-flex items-center justify-center rounded-full bg-brand-sky px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-brand-blue/30 transition hover:bg-brand-blue"
           >
             Donate
           </Link>
