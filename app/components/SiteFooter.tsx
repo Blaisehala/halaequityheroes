@@ -1,20 +1,27 @@
 import Image from "next/image";
 import Link from "next/link";
 
-// TODO: replace these placeholders with your real contact details
+// TODO: fill in your real contact details. Empty values are hidden everywhere
+// (footer and contact page), so nothing fake is ever shown.
 export const contact = {
-  location: "Add your town or city, country",
-  phone: "+000 000 000 000",
-  email: "hello@halaequityheroes.org",
+  location: "",
+  phone: "",
+  email: "",
 };
 
-// TODO: add your real social media links
+export const contactRows = [
+  { label: "Address", value: contact.location },
+  { label: "Phone", value: contact.phone },
+  { label: "Email", value: contact.email },
+].filter((row) => row.value);
+
+// TODO: add your real social media profile URLs; icons with an empty href are hidden
 const socials = [
-  { label: "Facebook", href: "#", icon: <path fill="currentColor" d="M14 8h2.5V4.5H14c-2.5 0-4 1.6-4 4.2V11H7.5v3.5H10V21h3.5v-6.5H16l.5-3.5h-3V9c0-.6.4-1 1-1z" /> },
-  { label: "X", href: "#", icon: <path stroke="currentColor" strokeWidth={2} strokeLinecap="round" d="M5 5l14 14M19 5L5 19" /> },
+  { label: "Facebook", href: "", icon: <path fill="currentColor" d="M14 8h2.5V4.5H14c-2.5 0-4 1.6-4 4.2V11H7.5v3.5H10V21h3.5v-6.5H16l.5-3.5h-3V9c0-.6.4-1 1-1z" /> },
+  { label: "X", href: "", icon: <path stroke="currentColor" strokeWidth={2} strokeLinecap="round" d="M5 5l14 14M19 5L5 19" /> },
   {
     label: "Instagram",
-    href: "#",
+    href: "",
     icon: (
       <g fill="none" stroke="currentColor" strokeWidth={2}>
         <rect x="4" y="4" width="16" height="16" rx="4.5" />
@@ -25,7 +32,7 @@ const socials = [
   },
   {
     label: "YouTube",
-    href: "#",
+    href: "",
     icon: (
       <g>
         <rect x="2.5" y="5.5" width="19" height="13" rx="4" fill="currentColor" />
@@ -34,6 +41,8 @@ const socials = [
     ),
   },
 ];
+
+const liveSocials = socials.filter((s) => s.href);
 
 const linkGroups = [
   {
@@ -64,8 +73,9 @@ export default function SiteFooter() {
             A community-led charity working for healthcare equity, so that
             quality care reaches everyone who needs it.
           </p>
+          {liveSocials.length > 0 && (
           <div className="mt-6 flex gap-2.5">
-            {socials.map((s) => (
+            {liveSocials.map((s) => (
               <a
                 key={s.label}
                 href={s.href}
@@ -76,6 +86,7 @@ export default function SiteFooter() {
               </a>
             ))}
           </div>
+          )}
         </div>
 
         {linkGroups.map((group) => (
@@ -97,18 +108,23 @@ export default function SiteFooter() {
           <h2 className="text-sm font-bold uppercase tracking-[0.14em] text-brand-navy">
             <Link href="/contact" className="transition hover:text-brand-blue">Contact Us</Link>
           </h2>
-          <dl className="mt-5 space-y-3 text-sm">
-            {[
-              { label: "Address", value: contact.location },
-              { label: "Phone", value: contact.phone },
-              { label: "Email", value: contact.email },
-            ].map((d) => (
-              <div key={d.label}>
-                <dt className="font-semibold text-brand-navy">{d.label}</dt>
-                <dd className="mt-0.5 break-words text-slate-600">{d.value}</dd>
-              </div>
-            ))}
-          </dl>
+          {contactRows.length > 0 ? (
+            <dl className="mt-5 space-y-3 text-sm">
+              {contactRows.map((d) => (
+                <div key={d.label}>
+                  <dt className="font-semibold text-brand-navy">{d.label}</dt>
+                  <dd className="mt-0.5 break-words text-slate-600">{d.value}</dd>
+                </div>
+              ))}
+            </dl>
+          ) : (
+            <p className="mt-5 text-sm leading-relaxed text-slate-600">
+              Questions, ideas or partnerships?{" "}
+              <Link href="/contact" className="font-semibold text-brand-blue underline-offset-4 hover:underline">
+                Send us a message
+              </Link>
+            </p>
+          )}
         </div>
       </div>
 

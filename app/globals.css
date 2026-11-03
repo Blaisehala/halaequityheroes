@@ -49,6 +49,28 @@ h3 {
   text-wrap: balance;
 }
 
+/* Animated world map (WorldMap.tsx): west-to-east sweep, then amber twinkles */
+.world-dot {
+  fill: var(--color-brand-blue);
+  opacity: 0;
+  transition: opacity 0.6s ease var(--d);
+}
+.world-map[data-visible="true"] .world-dot {
+  opacity: 0.4;
+}
+.world-map[data-visible="true"] .world-twinkle {
+  fill: var(--color-brand-amber);
+  animation: world-twinkle 4s ease-in-out var(--t) infinite;
+}
+@keyframes world-twinkle {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .world-dot { transition: none; opacity: 0.4; }
+  .world-map .world-twinkle { animation: none; fill: var(--color-brand-amber); opacity: 0.9; }
+}
+
 ::selection {
   background: var(--color-brand-sky-tint-deep);
   color: var(--color-brand-navy);

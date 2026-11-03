@@ -32,13 +32,13 @@ export function Header() {
         <div className="flex items-center gap-2">
           <Link
             href="/volunteer"
-            className="inline-flex items-center justify-center rounded-full border-2 border-white bg-transparent px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10"
+            className="inline-flex items-center justify-center border-2 border-white bg-transparent px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10"
           >
             Volunteer
           </Link>
           <Link
             href="/donate"
-            className="inline-flex items-center justify-center rounded-full bg-brand-sky px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-brand-blue/30 transition hover:bg-brand-blue"
+            className="inline-flex items-center justify-center bg-brand-sky px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-brand-blue/30 transition hover:bg-brand-blue"
           >
             Donate
           </Link>

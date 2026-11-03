@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import ContactSection from "../components/ContactSection";
 import { contact } from "../components/SiteFooter";
 import { pageMetadata } from "../lib/seo";
+import { photos } from "../lib/photos";
 
 export const metadata: Metadata = pageMetadata({
   title: "Contact Us",
@@ -65,7 +67,7 @@ export default function ContactPage() {
                 <br />
                 <span className="relative isolate inline-block">
                   Queries?
-                  <span aria-hidden className="absolute inset-x-0 bottom-1 -z-10 h-3 rounded-sm bg-gradient-to-r from-brand-amber to-brand-amber-dark sm:h-4" />
+                  <span aria-hidden className="absolute inset-x-0 bottom-1 -z-10 h-3 bg-gradient-to-r from-brand-amber to-brand-amber-dark sm:h-4"/>
                 </span>
               </h1>
               <p className="mt-6 max-w-md leading-relaxed text-slate-600">
@@ -73,7 +75,7 @@ export default function ContactPage() {
                 deserves: quality healthcare for all. Let&apos;s talk.
               </p>
               <ul className="mt-8 space-y-5">
-                {details.map((d) => (
+                {details.filter((d) => d.value).map((d) => (
                   <li key={d.label} className="flex items-center gap-4">
                     <svg viewBox="0 0 24 24" className="h-7 w-7 shrink-0 text-brand-blue" fill="none" stroke="currentColor" strokeWidth={1.7} strokeLinejoin="round" aria-label={d.label}>
                       <path d={d.icon} />
@@ -82,6 +84,9 @@ export default function ContactPage() {
                   </li>
                 ))}
               </ul>
+              <div className="relative mt-10 aspect-[4/5] max-w-sm overflow-hidden">
+                <Image src={photos.yellowFeather.src} alt={photos.yellowFeather.alt} fill sizes="24rem" className="object-cover" />
+              </div>
             </div>
 
             <ContactSection />

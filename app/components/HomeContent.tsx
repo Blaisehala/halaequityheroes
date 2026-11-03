@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import CurvedCarousel from "./CurvedCarousel";
 import ImpactPathways from "./ImpactPathways";
 import WhyWeCare from "./WhyWeCare";
+import WorldMap from "./WorldMap";
 import { photos } from "../lib/photos";
 import { stats } from "../lib/stats";
 import { faqs } from "../lib/faqs";
@@ -39,11 +40,11 @@ export default function HomeContent() {
     <div className="min-h-screen bg-white text-brand-ink">
       <main className="pt-16">
         {/* Hero with Curved Carousel */}
-<section className="relative min-h-[85vh] sm:min-h-[90vh] overflow-hidden bg-brand-navy text-white pb-8">
+<section className="relative min-h-[85vh] sm:min-h-[90vh] md:min-h-0 overflow-hidden bg-brand-navy text-white pb-8">
   <div className="absolute inset-0 bg-gradient-to-b from-brand-navy/90 via-transparent to-brand-navy/80 z-20 pointer-events-none md:hidden" />
 
   <div className="relative z-30 mx-auto max-w-6xl px-4 pt-12 sm:pt-16 md:hidden">
-    <div className="bg-brand-navy/70 backdrop-blur-sm rounded-2xl p-2">
+    <div className="bg-brand-navy/70 backdrop-blur-sm p-2">
     <p className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight text-center mb-6">
       Changing Lives
     </p>
@@ -75,7 +76,7 @@ export default function HomeContent() {
       {stats.map((stat) => (
         <li
           key={stat.label}
-          className="flex items-center gap-4 rounded-2xl bg-brand-navy/90 px-6 py-4 shadow-lg ring-1 ring-white/15 backdrop-blur-md md:bg-white/10"
+          className="flex items-center gap-4 bg-brand-navy/90 px-6 py-4 shadow-lg ring-1 ring-white/15 backdrop-blur-md md:bg-white/10"
         >
           <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-brand-amber/15 text-brand-amber">
             <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -138,7 +139,7 @@ export default function HomeContent() {
         Over 90% of lasting change starts in community. Our
         circles are the best way to reach people in great need.
       </p>
-      <p className="mt-3 text-[11px] leading-relaxed text-slate-500 sm:text-xs">
+      <p className="mt-3 text-sm leading-relaxed text-slate-600">
         If you want to join a volunteer community to help us offer a
         helping hand, consider making a donation. You can join the rest
         of us that care. Your donation can be given now and in the future.
@@ -146,13 +147,13 @@ export default function HomeContent() {
       <div className="mt-5 flex items-center justify-center gap-3">
         <Link
           href="/volunteer"
-          className="inline-flex h-8 items-center justify-center rounded-full border border-slate-300 bg-white px-5 text-[11px] font-medium text-slate-600 transition hover:border-slate-400 hover:text-slate-800"
+          className="inline-flex h-10 items-center justify-center border border-slate-300 bg-white px-6 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:text-slate-800"
         >
           volunteer
         </Link>
         <Link
           href="/donate"
-          className="inline-flex h-8 items-center justify-center rounded-full bg-brand-amber px-6 text-[11px] font-bold text-brand-navy shadow-sm transition hover:bg-brand-amber-dark"
+          className="inline-flex h-10 items-center justify-center bg-brand-amber px-7 text-sm font-bold text-brand-navy shadow-sm transition hover:bg-brand-amber-dark"
         >
           donate
         </Link>
@@ -178,7 +179,7 @@ export default function HomeContent() {
           <div className="relative aspect-[3/4] w-full overflow-hidden shadow-2xl lg:-mb-20 lg:-mt-14">
             <Image
               src="/images/hero2.jpg"
-              alt="Caregiver with a child"
+              alt="A young boy pointing at the camera beside a smiling friend"
               fill
               className="object-cover"
               sizes="240px"
@@ -187,7 +188,7 @@ export default function HomeContent() {
           <div className="absolute -bottom-6 -right-10 h-[72px] w-[72px] overflow-hidden shadow-lg sm:h-20 sm:w-20 lg:-bottom-8 lg:-right-14">
             <Image
               src="/images/hero5.jpg"
-              alt="Community member"
+              alt="Children smiling and waving from the windows of a school bus"
               fill
               className="object-cover"
               sizes="80px"
@@ -213,6 +214,8 @@ export default function HomeContent() {
 
         <WhyWeCare />
 
+        <WorldMap />
+
         {/* Join */}
         <section
           id="join"
@@ -230,7 +233,7 @@ export default function HomeContent() {
                   matches your current capacity.
                 </p>
               </div>
-              <p className="text-xs text-white/50">
+              <p className="text-sm text-white/75">
                 You can change or pause your involvement at any time.
               </p>
             </div>
@@ -238,7 +241,7 @@ export default function HomeContent() {
               {waysToJoin.map((way) => (
                 <div
                   key={way.title}
-                  className="group flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-white/5"
+                  className="group flex flex-col justify-between overflow-hidden border border-white/10 bg-white/5"
                 >
                   <div className="relative aspect-[16/10] overflow-hidden">
                     <Image
@@ -259,14 +262,14 @@ export default function HomeContent() {
                   </div>
                   <Link
                     href={way.href}
-                    className="m-5 inline-flex items-center justify-center rounded-full bg-white px-3 py-2.5 text-xs font-bold text-brand-navy transition hover:bg-brand-sky-tint"
+                    className="m-5 inline-flex items-center justify-center bg-white px-3 py-2.5 text-xs font-bold text-brand-navy transition hover:bg-brand-sky-tint"
                   >
                     {way.action}
                   </Link>
                 </div>
               ))}
             </div>
-            <form className="mt-10 max-w-md space-y-3 rounded-2xl border border-white/10 bg-white/5 p-6">
+            <form className="mt-10 max-w-md space-y-3 border border-white/10 bg-white/5 p-6">
               <p className="text-sm font-medium text-zinc-50">
                 Stay close to the work.
               </p>
@@ -279,16 +282,16 @@ export default function HomeContent() {
                   type="email"
                   required
                   placeholder="you@example.org"
-                  className="h-11 flex-1 rounded-full border border-white/15 bg-white/10 px-4 text-sm text-white outline-none placeholder:text-white/50 focus:border-brand-sky"
+                  className="h-11 w-full border border-white/25 bg-white/10 px-4 text-sm text-white outline-none placeholder:text-white/70 sm:flex-1 focus:border-brand-sky"
                 />
                 <button
                   type="submit"
-                  className="h-11 rounded-full bg-brand-amber px-5 text-xs font-bold text-brand-navy transition hover:bg-brand-amber-dark"
+                  className="h-11 bg-brand-amber px-5 text-xs font-bold text-brand-navy transition hover:bg-brand-amber-dark"
                 >
                   Get community notes
                 </button>
               </div>
-              <p className="text-[11px] text-white/50">
+              <p className="text-xs text-white/75">
                 No spam. Just stories and ways to support equity work around the
                 world.
               </p>
@@ -312,7 +315,7 @@ export default function HomeContent() {
               {faqs.map((faq) => (
                 <details
                   key={faq.q}
-                  className="group rounded-2xl bg-white px-6 py-5 shadow-sm ring-1 ring-slate-200/80"
+                  className="group bg-white px-6 py-5 shadow-sm ring-1 ring-slate-200/80"
                 >
                   <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-bold text-brand-navy [&::-webkit-details-marker]:hidden">
                     {faq.q}

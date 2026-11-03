@@ -11,7 +11,7 @@ export default function IntroLead({ title, image, children }: { title: string; i
         <div className="mt-6 space-y-4 text-lg leading-relaxed text-slate-600">{children}</div>
       </div>
       <div className="relative mx-auto mt-14 max-w-6xl px-6 pb-20 sm:pb-24">
-        <div className="relative aspect-[16/9] overflow-hidden rounded-3xl shadow-xl">
+        <div className="relative aspect-[16/9] overflow-hidden shadow-xl">
           <Image src={image.src} alt={image.alt} fill sizes="(min-width: 1152px) 1104px, 100vw" className="object-cover" />
         </div>
       </div>

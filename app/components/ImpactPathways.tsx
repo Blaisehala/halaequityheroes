@@ -41,32 +41,32 @@ const pathways = [
 
 const collage = [
   {
-    src: '/images/hero3.jpg',
-    alt: 'Children sharing a joyful moment together',
+    src: '/images/pexels-abril-paez-rosano-1170456433-21581705.jpg',
+    alt: 'Two young children standing together on sandy ground under a blue sky',
     className:
       'z-20 w-[42%] left-[28%] top-[4%] rotate-[-7deg] sm:w-[38%]',
   },
   {
-    src: '/images/hero2.jpg',
-    alt: 'A caregiver holding a child close',
+    src: '/images/pexels-atsahyel-aaron-243125759-13564632.jpg',
+    alt: 'Two boys grinning arm in arm on a city street',
     className:
       'z-30 w-[46%] left-[8%] top-[32%] rotate-[6deg] sm:w-[40%] sm:left-[2%] sm:top-[30%]',
   },
   {
-    src: '/images/hero5.jpg',
-    alt: 'A smiling child looking toward the camera',
+    src: '/images/pexels-dboyag-13019957.jpg',
+    alt: 'Close-up of a smiling child',
     className:
       'z-40 w-[48%] right-[4%] top-[38%] rotate-[-4deg] sm:w-[44%] sm:right-[2%] sm:top-[34%]',
   },
   {
-    src: '/images/hero1.jpg',
-    alt: 'A child with a caregiver outdoors',
+    src: '/images/pexels-jb-jorge-barreto-1459384-7192140.jpg',
+    alt: 'Close-up of a grinning young boy',
     className:
       'z-20 w-[36%] left-[18%] bottom-[4%] rotate-[-11deg] sm:w-[32%] sm:left-[22%]',
   },
   {
     src: '/images/hero4.jpg',
-    alt: 'A volunteer standing with a child',
+    alt: 'Two boys in bright clothes laughing with their arms around each other',
     className:
       'z-10 w-[34%] right-[10%] bottom-[2%] rotate-[9deg] hidden sm:block sm:w-[30%]',
   },
@@ -98,7 +98,7 @@ export default function ImpactPathways() {
           transition={{ duration: reduceMotion ? 0 : 0.55, ease: 'easeOut' }}
           className="relative z-10 max-w-xl"
         >
-          <p className="text-[11px] font-semibold tracking-[0.28em] text-brand-navy/70">
+          <p className="text-xs font-semibold tracking-[0.28em] text-brand-navy/80">
             FOR CHILDREN LIVING BEYOND THE PAIN
           </p>
 
@@ -119,7 +119,7 @@ export default function ImpactPathways() {
           <div className="mt-10 max-w-md border border-brand-navy/10 bg-white p-4 shadow-[0_18px_50px_rgba(12,35,64,0.08)] sm:p-5">
             <h3
               id="pathways-heading"
-              className="text-[11px] font-semibold tracking-[0.22em] text-brand-navy/70"
+              className="text-xs font-semibold tracking-[0.22em] text-brand-navy/80"
             >
               HOW WILL YOU SHOW UP?
             </h3>
@@ -158,11 +158,11 @@ export default function ImpactPathways() {
                         : 'border-transparent bg-brand-sky-tint-deep text-brand-navy hover:bg-brand-sky-tint-deeper'
                     }`}
                   >
-                    <span className="block text-[11px] font-semibold uppercase tracking-[0.12em]">
+                    <span className="block text-xs font-semibold uppercase tracking-[0.12em]">
                       {path.title}
                     </span>
                     <span
-                      className={`mt-1.5 block text-[11px] leading-relaxed ${
+                      className={`mt-1.5 block text-[13px] leading-relaxed ${
                         isSelected ? 'text-brand-navy/80' : 'text-brand-navy/65'
                       }`}
                     >
@@ -176,7 +176,7 @@ export default function ImpactPathways() {
             <Link
               href={active.href}
               aria-label={`Explore our impact: ${active.title}`}
-              className="mt-4 flex min-h-12 w-full items-center justify-center bg-brand-blue px-4 text-[12px] font-bold tracking-[0.18em] text-white transition-colors duration-200 hover:bg-brand-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-navy"
+              className="mt-4 flex min-h-12 w-full items-center justify-center bg-brand-blue px-4 text-sm font-bold tracking-[0.18em] text-white transition-colors duration-200 hover:bg-brand-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-navy"
             >
               EXPLORE OUR IMPACT
             </Link>

@@ -2,12 +2,14 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { honeypotProps, submitForm, type FormStatus } from "../lib/submitForm";
 
 const inputClass =
-  "w-full rounded-md border border-transparent bg-brand-sky-tint px-4 py-3.5 text-sm text-brand-ink outline-none transition placeholder:text-slate-400 focus:border-brand-blue focus:bg-white focus:ring-4 focus:ring-brand-blue/10";
+  "w-full border border-transparent bg-brand-sky-tint px-4 py-3.5 text-sm text-brand-ink outline-none transition placeholder:text-slate-500 focus:border-brand-blue focus:bg-white focus:ring-4 focus:ring-brand-blue/10";
 
 export default function ContactSection() {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<FormStatus>("idle");
+  const [error, setError] = useState("");
 
   return (
     <div>
@@ -16,13 +18,14 @@ export default function ContactSection() {
       </h2>
 
       <AnimatePresence mode="wait" initial={false}>
-        {sent ? (
+        {status === "sent" ? (
           <motion.div
             key="sent"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
-            className="mt-6 rounded-2xl bg-brand-sky-tint p-10 text-center"
+            role="status"
+            className="mt-6 bg-brand-sky-tint p-10 text-center"
           >
             <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-brand-amber text-2xl text-brand-navy">
               ✓
@@ -31,7 +34,7 @@ export default function ContactSection() {
             <p className="mt-2 text-slate-600">We&apos;ll get back to you as soon as we can.</p>
             <button
               type="button"
-              onClick={() => setSent(false)}
+              onClick={() => setStatus("idle")}
               className="mt-6 text-sm font-semibold text-brand-blue underline-offset-4 hover:underline"
             >
               Send another message
@@ -43,25 +46,34 @@ export default function ContactSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            // TODO: connect to an email service or API route to actually deliver messages
-            onSubmit={(e) => {
+            onSubmit={async (e) => {
               e.preventDefault();
-              setSent(true);
+              setStatus("sending");
+              const result = await submitForm("/api/contact", e.currentTarget);
+              setStatus(result.status);
+              setError(result.message ?? "");
             }}
-            className="mt-6 space-y-4"
+            className="relative mt-6 space-y-4"
           >
+            <input {...honeypotProps} />
             <div className="grid gap-4 sm:grid-cols-2">
-              <input aria-label="Name" type="text" required placeholder="Name" className={inputClass} />
-              <input aria-label="Email" type="email" required placeholder="Email" className={inputClass} />
+              <input name="name" aria-label="Name" type="text" required autoComplete="name" placeholder="Name" className={inputClass} />
+              <input name="email" aria-label="Email" type="email" required autoComplete="email" placeholder="Email" className={inputClass} />
             </div>
-            <input aria-label="Phone" type="tel" placeholder="Phone" className={inputClass} />
-            <input aria-label="Subject" type="text" required placeholder="Subject" className={inputClass} />
-            <textarea aria-label="Message" rows={5} required placeholder="Message" className={inputClass} />
+            <input name="phone" aria-label="Phone" type="tel" autoComplete="tel" placeholder="Phone (optional)" className={inputClass} />
+            <input name="subject" aria-label="Subject" type="text" required placeholder="Subject" className={inputClass} />
+            <textarea name="message" aria-label="Message" rows={5} required placeholder="Message" className={inputClass} />
+            {status === "error" && (
+              <p role="alert" className="border-l-4 border-brand-amber bg-brand-sky-tint px-4 py-3 text-sm font-semibold text-brand-navy">
+                {error}
+              </p>
+            )}
             <button
               type="submit"
-              className="rounded-full bg-brand-amber px-8 py-3.5 text-sm font-bold text-brand-navy shadow-md shadow-brand-amber/30 transition hover:bg-brand-amber-dark"
+              disabled={status === "sending"}
+              className="bg-brand-amber px-8 py-3.5 text-sm font-bold text-brand-navy shadow-md shadow-brand-amber/30 transition hover:bg-brand-amber-dark disabled:cursor-wait disabled:opacity-70"
             >
-              Send Message
+              {status === "sending" ? "Sending…" : "Send Message"}
             </button>
           </motion.form>
         )}

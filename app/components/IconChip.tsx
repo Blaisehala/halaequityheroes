@@ -11,7 +11,7 @@ export type Tone = keyof typeof tones;
 // Small tinted icon badge — the main way accent colours appear on cards
 export default function IconChip({ d, tone }: { d: string; tone: Tone }) {
   return (
-    <span className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl ${tones[tone]}`}>
+    <span className={`flex h-14 w-14 shrink-0 items-center justify-center ${tones[tone]}`}>
       <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
         <path d={d} />
       </svg>

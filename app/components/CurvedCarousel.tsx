@@ -10,11 +10,11 @@ interface ImageData {
 }
 
 const images: ImageData[] = [
-  { src: '/images/hero1.jpg', alt: 'Child with caregiver' },
-  { src: '/images/hero2.jpg', alt: 'Mother and child' },
-  { src: '/images/hero3.jpg', alt: 'Happy children' },
-  { src: '/images/hero4.jpg', alt: 'Volunteer and child' },
-  { src: '/images/hero5.jpg', alt: 'Smiling child' }
+  { src: '/images/hero1.jpg', alt: 'Two young girls peeking out together with big smiles' },
+  { src: '/images/hero2.jpg', alt: 'A young boy pointing at the camera beside a smiling friend' },
+  { src: '/images/hero3.jpg', alt: 'Two children standing side by side, sharing a bright moment' },
+  { src: '/images/hero4.jpg', alt: 'Two boys in bright clothes laughing with their arms around each other' },
+  { src: '/images/hero5.jpg', alt: 'Children smiling and waving from the windows of a school bus' }
 ]
 
 // Desktop positions - curved arc (no overlay blocking!)
@@ -92,7 +92,7 @@ export default function CurvedCarousel() {
             transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
             onClick={() => rotateImages('right')}
           >
-            <div className="relative w-full h-full shadow-2xl rounded-lg overflow-hidden border-4 md:border-[6px] border-white/95 hover:border-brand-sky/90 transition-colors duration-300">
+            <div className="relative w-full h-full shadow-2xl overflow-hidden border-4 md:border-[6px] border-white/95 hover:border-brand-sky/90 transition-colors duration-300">
               <Image
                 src={img.src}
                 alt={img.alt}

@@ -5,7 +5,7 @@ import NumberedSteps from "../components/NumberedSteps";
 import FullBleedSplit from "../components/FullBleedSplit";
 import OverlapCard from "../components/OverlapCard";
 import QAGrid from "../components/QAGrid";
-import CtaBand from "../components/CtaBand";
+import NewsletterSignup from "../components/NewsletterSignup";
 import { pageMetadata } from "../lib/seo";
 import { photos } from "../lib/photos";
 
@@ -20,7 +20,8 @@ export default function AboutPage() {
   return (
     <main>
       <PageHero
-        image={photos.caregiverGroup}
+        variant="split"
+        image={photos.matchingPrints}
         eyebrow="About us"
         title="People showing up for each other"
         intro="Hala Equity Heroes is a community-based charity that directs time, skills, and resources to grassroots leaders advancing gender, racial, economic, and educational equity."
@@ -71,7 +72,7 @@ export default function AboutPage() {
       </OverlapCard>
 
       <QAGrid />
-      <CtaBand />
+      <NewsletterSignup variant="split" title="Stay close to the work" />
     </main>
   );
 }

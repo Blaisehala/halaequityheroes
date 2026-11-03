@@ -16,8 +16,8 @@ const stories = [
   {
     id: 'children',
     label: 'CHILDREN',
-    src: '/images/hero3.jpg',
-    alt: 'Children sharing a bright, ordinary moment together',
+    src: '/images/pexels-aderawilson-15538207.jpg',
+    alt: 'A group of smiling children holding colourful toys',
     story:
       'Behind every sickle cell diagnosis is a child with a name, a laugh, and a future still being written.',
     href: '/stories',
@@ -25,8 +25,8 @@ const stories = [
   {
     id: 'health',
     label: 'HEALTH',
-    src: '/images/hero2.jpg',
-    alt: 'A child with a caregiver during a moment of attentive care',
+    src: '/images/pexels-jean-marc-bonnel-387362531-19428885.jpg',
+    alt: 'Portrait of a young girl with braided hair',
     story:
       'Access to steady care can mean fewer crises, more school days, and more room for a child to simply be a child.',
     href: '/stories',
@@ -34,8 +34,8 @@ const stories = [
   {
     id: 'care',
     label: 'CARE',
-    src: '/images/hero4.jpg',
-    alt: 'A volunteer standing with a child in a supportive setting',
+    src: '/images/pexels-kema-28097506.jpg',
+    alt: 'A sunlit child smiling over their shoulder',
     story:
       'Living with sickle cell should never mean a child has to face it alone. Care is also presence, patience, and community.',
     href: '/get-involved',
@@ -43,8 +43,8 @@ const stories = [
   {
     id: 'education',
     label: 'EDUCATION',
-    src: '/images/hero1.jpg',
-    alt: 'A child with a caregiver, ready for learning and everyday life',
+    src: '/images/pexels-ana-kenk-2159501753-36467878.jpg',
+    alt: 'A crowd of schoolchildren smiling outside their school',
     story:
       'When families understand the condition and schools know how to support, children can stay in class and keep their dreams in view.',
     href: '/stories',
@@ -70,7 +70,7 @@ export default function WhyWeCare() {
     >
       <div className="mx-auto max-w-5xl px-5 sm:px-8">
         <motion.div {...fade} className="text-center">
-          <p className="text-[11px] font-semibold tracking-[0.32em] text-brand-navy/55">
+          <p className="text-xs font-semibold tracking-[0.32em] text-brand-navy/80">
             WHY WE CARE
           </p>
           <h2
@@ -90,7 +90,7 @@ export default function WhyWeCare() {
           className="mt-10 sm:mt-12"
         >
           <div className="relative">
-            <div className="relative overflow-hidden rounded-md">
+            <div className="relative overflow-hidden ">
               <div className="relative aspect-[16/10] min-h-[240px] w-full sm:min-h-[360px]">
                 <AnimatePresence mode="wait" initial={false}>
                   <motion.div
@@ -145,7 +145,7 @@ export default function WhyWeCare() {
                             document.getElementById(`story-tab-${prev.id}`)?.focus()
                           }
                         }}
-                        className={`rounded-full border px-2.5 py-1 text-[9px] font-semibold tracking-[0.14em] transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-navy sm:px-3 sm:text-[10px] ${
+                        className={`border px-3 py-1 text-xs font-semibold tracking-[0.14em] transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-navy sm:px-3 sm:text-xs ${
                           isActive
                             ? 'border-brand-navy bg-brand-navy text-white'
                             : 'border-white/70 bg-white/90 text-brand-navy/80 hover:bg-white'
@@ -179,7 +179,7 @@ export default function WhyWeCare() {
                   </p>
                   <Link
                     href={active.href}
-                    className="mt-4 inline-block text-[11px] font-semibold tracking-[0.14em] text-brand-navy transition-colors hover:text-brand-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-navy"
+                    className="mt-4 inline-block text-xs font-bold tracking-[0.14em] text-brand-navy transition-colors hover:text-brand-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-navy"
                   >
                     LEARN ABOUT OUR IMPACT
                   </Link>
@@ -209,7 +209,7 @@ export default function WhyWeCare() {
           </p>
           <Link
             href="/get-involved"
-            className="mt-7 inline-flex min-h-10 items-center justify-center rounded-full bg-brand-amber px-6 text-[12px] font-bold tracking-[0.14em] text-brand-navy transition-colors hover:bg-brand-amber-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-navy"
+            className="mt-7 inline-flex min-h-10 items-center justify-center bg-brand-amber px-7 text-sm font-bold tracking-[0.14em] text-brand-navy transition-colors hover:bg-brand-amber-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-navy"
           >
             SUPPORT A CHILD
           </Link>
@@ -225,7 +225,7 @@ export default function WhyWeCare() {
           aria-label="How your support helps"
         >
           <div
-            className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-[1.5px] border-brand-navy text-[11px] font-semibold tracking-[0.16em] text-brand-navy sm:h-16 sm:w-16"
+            className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-[1.5px] border-brand-navy text-xs font-semibold tracking-[0.16em] text-brand-navy sm:h-16 sm:w-16"
             aria-hidden
           >
             CARE
@@ -234,7 +234,7 @@ export default function WhyWeCare() {
             <p className="text-[13px] font-semibold text-brand-navy sm:text-sm">
               Small acts can create meaningful change.
             </p>
-            <p className="mt-1 text-[12px] leading-relaxed text-brand-navy/70 sm:text-[13px]">
+            <p className="mt-1 text-sm leading-relaxed text-brand-navy/80">
               Your support can help provide children and families affected by
               sickle cell with access to resources, encouragement, education,
               and community.

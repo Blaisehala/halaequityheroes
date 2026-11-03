@@ -50,7 +50,7 @@ export default function VideoModal({ isOpen, onClose, videoId }: VideoModalProps
                 stiffness: 200,
                 duration: 0.4 
               }}
-              className="relative w-full max-w-5xl aspect-video bg-black rounded-2xl shadow-2xl overflow-hidden"
+              className="relative w-full max-w-5xl aspect-video bg-black shadow-2xl overflow-hidden"
               style={{ transformStyle: 'preserve-3d' }}
             >
               {/* Close Button */}
@@ -85,7 +85,7 @@ export default function VideoModal({ isOpen, onClose, videoId }: VideoModalProps
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2 }}
               >
-                <div className="absolute inset-0 rounded-2xl border-2 border-brand-sky/30" />
+                <div className="absolute inset-0 border-2 border-brand-sky/30"/>
               </motion.div>
             </motion.div>
           </div>

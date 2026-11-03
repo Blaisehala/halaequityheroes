@@ -1,9 +1,19 @@
 type IconGridItem = { title: string; body: string; icon: string };
 
 // Grid of outlined line icons with short descriptions
-export default function IconGrid({ title, intro, items }: { title: string; intro?: string; items: IconGridItem[] }) {
+export default function IconGrid({
+  title,
+  intro,
+  items,
+  background = "sky",
+}: {
+  title: string;
+  intro?: string;
+  items: IconGridItem[];
+  background?: "sky" | "white";
+}) {
   return (
-    <section className="bg-brand-sky-tint py-20 sm:py-24">
+    <section className={`${background === "sky" ? "bg-brand-sky-tint" : "bg-white"} py-20 sm:py-24`}>
       <div className="mx-auto max-w-6xl px-6">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="font-display text-4xl text-brand-navy sm:text-5xl">{title}</h2>

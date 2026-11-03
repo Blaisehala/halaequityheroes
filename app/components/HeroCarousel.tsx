@@ -47,7 +47,7 @@ export function HeroCarousel() {
             key={i}
             className="flex h-full shrink-0 w-full items-center justify-center px-4 sm:px-8"
           >
-            <div className="relative h-full w-full max-w-4xl mx-auto min-h-[200px] rounded-xl overflow-hidden border border-white/20 bg-slate-700/60 shadow-2xl">
+            <div className="relative h-full w-full max-w-4xl mx-auto min-h-[200px] overflow-hidden border border-white/20 bg-slate-700/60 shadow-2xl">
               {/* Placeholder: replace with <Image> or <img> when you add real images */}
               <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-slate-600/90 to-brand-navy/90 text-white/90">
                 <span className="text-sm sm:text-base font-medium tracking-wide">

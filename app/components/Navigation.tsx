@@ -110,7 +110,7 @@ export default function Navigation() {
                         <Link
                           href={item.href}
                           aria-current={active ? 'page' : undefined}
-                          className={`block rounded-full px-3 py-2 text-sm font-semibold transition-colors ${active ? 'text-white' : 'text-white/80 hover:text-white'}`}
+                          className={`block px-3 py-2 text-sm font-semibold transition-colors ${active ? 'text-white' : 'text-white/80 hover:text-white'}`}
                         >
                           {item.label}
                         </Link>
@@ -131,7 +131,7 @@ export default function Navigation() {
                           href={item.href}
                           onClick={closeDropdown}
                           aria-current={active ? 'page' : undefined}
-                          className={`rounded-full py-2 pl-3 pr-1 text-sm font-semibold transition-colors ${active ? 'text-white' : 'text-white/80 group-hover:text-white'}`}
+                          className={`py-2 pl-3 pr-1 text-sm font-semibold transition-colors ${active ? 'text-white' : 'text-white/80 group-hover:text-white'}`}
                         >
                           {item.label}
                         </Link>
@@ -141,7 +141,7 @@ export default function Navigation() {
                           aria-controls={menuId}
                           aria-label={`Show ${item.label} pages`}
                           onClick={() => setOpenMenu(open ? null : item.label)}
-                          className="rounded-full p-1 text-white/70 transition-colors hover:text-white"
+                          className="p-1 text-white/70 transition-colors hover:text-white"
                         >
                           <Chevron className={`h-4 w-4 transition-transform duration-200 group-hover:rotate-180 ${open ? 'rotate-180' : ''}`} />
                         </button>
@@ -152,13 +152,13 @@ export default function Navigation() {
                         id={menuId}
                         className={`absolute left-1/2 top-full -translate-x-1/2 pt-3 transition duration-150 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 ${open ? 'visible translate-y-0 opacity-100' : 'invisible -translate-y-1 opacity-0'}`}
                       >
-                        <ul className="w-80 rounded-2xl bg-white p-2 shadow-xl ring-1 ring-slate-900/5">
+                        <ul className="w-80 bg-white p-2 shadow-xl ring-1 ring-slate-900/5">
                           {item.children.map((child) => (
                             <li key={child.href}>
                               <Link
                                 href={child.href}
                                 onClick={closeDropdown}
-                                className="block rounded-xl px-4 py-3 transition-colors hover:bg-brand-sky-tint focus-visible:bg-brand-sky-tint focus-visible:outline-none"
+                                className="block px-4 py-3 transition-colors hover:bg-brand-sky-tint focus-visible:bg-brand-sky-tint focus-visible:outline-none"
                               >
                                 <span className="block text-sm font-bold text-brand-navy">{child.label}</span>
                                 <span className="mt-0.5 block text-xs leading-relaxed text-slate-500">{child.description}</span>
@@ -177,13 +177,13 @@ export default function Navigation() {
             <div className="hidden md:flex items-center gap-3">
               <Link
                 href="/volunteer"
-                className="px-5 py-2 text-sm font-bold text-white border-2 border-white/25 rounded-full hover:bg-white/10 transition-colors duration-200"
+                className="px-5 py-2 text-sm font-bold text-white border-2 border-white/25 hover:bg-white/10 transition-colors duration-200"
               >
                 Volunteer
               </Link>
               <Link
                 href="/donate"
-                className="px-5 py-2.5 text-sm font-bold text-brand-navy bg-brand-amber rounded-full hover:bg-brand-amber-dark transition-colors duration-200 shadow-md shadow-brand-amber/30"
+                className="px-5 py-2.5 text-sm font-bold text-brand-navy bg-brand-amber hover:bg-brand-amber-dark transition-colors duration-200 shadow-md shadow-brand-amber/30"
               >
                 Donate
               </Link>
@@ -247,7 +247,7 @@ export default function Navigation() {
                                 className="flex w-full items-center justify-between py-2.5 text-left text-base font-semibold text-white"
                               >
                                 {item.label}
-                                <Chevron className={`h-5 w-5 text-white/60 transition-transform ${expanded ? 'rotate-180' : ''}`} />
+                                <Chevron className={`h-5 w-5 text-white/75 transition-transform ${expanded ? 'rotate-180' : ''}`} />
                               </button>
                               {expanded && (
                                 <ul className="mb-2 space-y-1 border-l border-white/15 pl-4">
@@ -285,14 +285,14 @@ export default function Navigation() {
                   <Link
                     href="/volunteer"
                     onClick={() => setIsOpen(false)}
-                    className="block w-full px-4 py-3 text-center text-sm font-bold text-white border-2 border-white/25 rounded-full hover:bg-white/10 transition-colors duration-200"
+                    className="block w-full px-4 py-3 text-center text-sm font-bold text-white border-2 border-white/25 hover:bg-white/10 transition-colors duration-200"
                   >
                     Volunteer
                   </Link>
                   <Link
                     href="/donate"
                     onClick={() => setIsOpen(false)}
-                    className="block w-full px-4 py-3 text-center text-sm font-bold text-brand-navy bg-brand-amber rounded-full hover:bg-brand-amber-dark transition-colors duration-200 shadow-md"
+                    className="block w-full px-4 py-3 text-center text-sm font-bold text-brand-navy bg-brand-amber hover:bg-brand-amber-dark transition-colors duration-200 shadow-md"
                   >
                     Donate
                   </Link>
