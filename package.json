@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "check:palette": "node scripts/check-palette.mjs",
-    "prebuild": "npm run check:palette",
+    "check:nextjs": "node scripts/check-nextjs.mjs",
+    "prebuild": "npm run check:palette && npm run check:nextjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
