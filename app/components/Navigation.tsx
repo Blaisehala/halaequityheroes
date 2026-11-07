@@ -17,6 +17,7 @@ const navItems: NavItem[] = [
     label: 'About Us',
     children: [
       { href: '/about', label: 'Who We Are', description: 'Our story and the people behind the work' },
+      { href: '/our-story', label: 'Our Story', description: 'How Hala Equity Heroes came about' },
       { href: '/mission', label: 'Our Mission', description: 'Healthcare for all: quality first, equity always' },
       { href: '/about#how-we-work', label: 'How We Work', description: 'Simple, transparent and accountable' },
       { href: '/about#our-community', label: 'Our Community', description: 'A core team and a network of volunteer circles' },
@@ -43,6 +44,7 @@ const navItems: NavItem[] = [
       { href: '/stories#care-for-every-child', label: 'Care for Every Child', description: 'Supporting children living with sickle cell' },
     ],
   },
+  { href: '/newsletter', label: 'Newsletter' },
   { href: '/contact', label: 'Contact' },
 ]
 

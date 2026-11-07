@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { honeypotProps, submitForm, type FormStatus } from "../lib/submitForm";
 import Eyebrow from "./Eyebrow";
@@ -77,6 +78,9 @@ export default function ContactSection() {
             >
               {status === "sending" ? "Sending…" : "Send Message"}
             </button>
+            <p className="text-xs text-slate-500">
+              We&apos;ll only use your details to reply to you. See our <Link href="/privacy" className="underline underline-offset-2 hover:text-brand-blue">Privacy Policy</Link>.
+            </p>
           </motion.form>
         )}
       </AnimatePresence>

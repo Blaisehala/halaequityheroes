@@ -92,7 +92,7 @@ export default function DonationCard() {
           >
             {redirecting ? "Opening secure checkout…" : "Donate now"}
           </button>
-          <p className="mt-4 text-center text-xs text-slate-600">You&apos;ll finish on our secure payment page. Change or pause your giving at any time.</p>
+          <p className="mt-4 text-center text-xs text-slate-600">You&apos;ll finish on our secure payment page. Change or pause your giving at any time. See our <Link href="/privacy" className="underline underline-offset-2 hover:text-brand-blue">Privacy Policy</Link>.</p>
         </>
       ) : (
         <div role="status" className="mt-6 border-l-4 border-brand-amber bg-brand-sky-tint px-4 py-3 text-sm text-brand-navy">

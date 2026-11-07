@@ -2,6 +2,7 @@
 
 import { useId, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import Eyebrow, { logoCycle } from "./Eyebrow";
 import { honeypotProps, submitForm, type FormStatus } from "../lib/submitForm";
 
@@ -23,7 +24,7 @@ const smallPrint = "No spam. Just stories and ways to support equity work around
 
 type FormLook = "box" | "stacked" | "line" | "dark";
 
-function SignupForm({ look }: { look: FormLook }) {
+export function SignupForm({ look }: { look: FormLook }) {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [error, setError] = useState("");
   const id = useId();
@@ -84,6 +85,10 @@ function SignupForm({ look }: { look: FormLook }) {
           {error}
         </p>
       )}
+      <p className={`mt-3 text-xs ${dark ? "text-white/75" : "text-slate-500"}`}>
+        By subscribing, you agree to our{" "}
+        <Link href="/privacy" className="underline underline-offset-2 hover:opacity-80">Privacy Policy</Link>. Unsubscribe any time.
+      </p>
     </form>
   );
 }

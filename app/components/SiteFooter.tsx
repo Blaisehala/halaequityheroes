@@ -49,6 +49,7 @@ const linkGroups = [
     title: "Explore",
     links: [
       { href: "/about", label: "About Us" },
+      { href: "/our-story", label: "Our Story" },
       { href: "/mission", label: "Our Mission" },
       { href: "/stories", label: "Stories" },
     ],
@@ -59,6 +60,7 @@ const linkGroups = [
       { href: "/get-involved", label: "Get Involved" },
       { href: "/volunteer", label: "Volunteer" },
       { href: "/donate", label: "Donate" },
+      { href: "/newsletter", label: "Newsletter" },
     ],
   },
 ];
@@ -142,8 +144,11 @@ export default function SiteFooter() {
         <polygon points="1200,32 1300,6 1300,48 1140,48" fill="#e41860" />
         <polygon points="1300,6 1440,24 1440,48 1300,48" fill="#1b5580" />
       </svg>
-      <div className="bg-brand-navy px-6 py-4 text-center text-xs text-white/70">
-        © {new Date().getFullYear()} Hala Equity Heroes. All rights reserved.
+      <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 bg-brand-navy px-6 py-4 text-center text-xs text-white/70">
+        <span>© {new Date().getFullYear()} Hala Equity Heroes. All rights reserved.</span>
+        <Link href="/privacy" className="font-semibold text-white/85 underline-offset-4 hover:text-white hover:underline">
+          Privacy Policy
+        </Link>
       </div>
     </footer>
   );

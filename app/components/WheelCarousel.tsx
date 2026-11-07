@@ -68,7 +68,7 @@ export default function WheelCarousel() {
       <button
         type="button"
         onClick={() => setOffset((o) => o + step)}
-        className="absolute left-3 top-[calc(var(--card-h)*1.6)] z-10 flex h-11 w-11 items-center justify-center rounded-full border-2 border-white/80 bg-black/30 text-white backdrop-blur-sm transition hover:bg-black/50 md:left-8 md:h-14 md:w-14"
+        className="absolute left-3 top-[calc(var(--card-h)*0.9)] z-10 flex h-11 w-11 items-center justify-center rounded-full border-2 border-white/80 bg-black/30 text-white backdrop-blur-sm transition hover:bg-black/50 md:left-8 md:h-14 md:w-14"
         aria-label="Previous photos"
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
@@ -80,7 +80,7 @@ export default function WheelCarousel() {
         onClick={() => setPaused((p) => !p)}
         aria-pressed={paused}
         aria-label={paused ? "Play photo carousel" : "Pause photo carousel"}
-        className="absolute bottom-4 right-4 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-sm transition hover:bg-black/60 md:right-8"
+        className="absolute right-4 top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-sm transition hover:bg-black/60 md:right-8"
       >
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
           {paused ? <path d="M7 4l13 8-13 8z" /> : <path d="M6 4h4v16H6zM14 4h4v16h-4z" />}
@@ -89,7 +89,7 @@ export default function WheelCarousel() {
       <button
         type="button"
         onClick={() => setOffset((o) => o - step)}
-        className="absolute right-3 top-[calc(var(--card-h)*1.6)] z-10 flex h-11 w-11 items-center justify-center rounded-full border-2 border-white/80 bg-black/30 text-white backdrop-blur-sm transition hover:bg-black/50 md:right-8 md:h-14 md:w-14"
+        className="absolute right-3 top-[calc(var(--card-h)*0.9)] z-10 flex h-11 w-11 items-center justify-center rounded-full border-2 border-white/80 bg-black/30 text-white backdrop-blur-sm transition hover:bg-black/50 md:right-8 md:h-14 md:w-14"
         aria-label="Next photos"
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>

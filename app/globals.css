@@ -63,7 +63,7 @@ h3 {
 
 /* Home hero photo wheel (WheelCarousel.tsx): continuous turn; the pause button sets data-paused */
 .wheel-spin {
-  animation: wheel-spin 90s linear infinite;
+  animation: wheel-spin 92s linear infinite;
 }
 .wheel-spin[data-paused="true"] {
   animation-play-state: paused;
@@ -100,4 +100,22 @@ h3 {
 ::selection {
   background: var(--color-brand-sky-tint-deep);
   color: var(--color-brand-navy);
+}
+
+/* Story pop-up (StoryExplorer.tsx): fade and scale in, with a dimmed backdrop */
+.story-dialog[open] {
+  animation: story-in 0.35s cubic-bezier(.37, .01, 0, .98);
+}
+.story-dialog::backdrop {
+  background: rgb(12 35 64 / 0.6);
+  animation: story-fade 0.35s ease-out;
+}
+@keyframes story-in {
+  from { opacity: 0; transform: translateY(16px) scale(0.97); }
+}
+@keyframes story-fade {
+  from { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .story-dialog[open], .story-dialog::backdrop { animation: none; }
 }

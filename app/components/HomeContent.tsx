@@ -44,16 +44,19 @@ export default function HomeContent() {
             then the details below the wheel */}
 <section className="relative overflow-hidden bg-brand-navy text-white">
   <div className="relative z-20 mx-auto max-w-4xl px-6 pt-12 text-center sm:pt-16">
-    <h1 className="whitespace-nowrap text-[clamp(1.3rem,5.6vw,3.75rem)] font-extrabold leading-tight tracking-tight">
+    <h1 className="whitespace-nowrap text-[clamp(1.2rem,4.6vw,2.9rem)] font-medium leading-tight tracking-normal text-white/80">
       Quality First, Equity Always
     </h1>
   </div>
 
   <div className="relative mt-8 h-[370px] overflow-hidden sm:h-[480px] md:h-[600px]">
     <WheelCarousel />
+    {/* Fade the lower wheel into the navy so the intro can sit over it */}
+    <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-40 bg-gradient-to-t from-brand-navy via-brand-navy/80 to-transparent sm:h-52" />
   </div>
 
-  <div className="relative z-20 mx-auto max-w-4xl px-6 pb-16 text-center sm:pb-20">
+  {/* Pulled up over the bottom of the wheel so it shows on first load */}
+  <div className="relative z-20 mx-auto -mt-[85px] max-w-4xl px-6 pb-16 text-center sm:-mt-[133px] sm:pb-20 md:-mt-[165px]">
     <p className="mx-auto max-w-2xl text-base leading-relaxed text-white/90 md:text-lg">
       In regions where resources are scarce, our community-powered
       initiatives are among the most effective ways to deliver care and
@@ -84,13 +87,13 @@ export default function HomeContent() {
     </ul>
 </div>
 
-        {/* Mission — layout modelled on mercyships.org: huge "1978" watermark, edge-pinned
+        {/* Mission — layout modelled on mercyships.org: huge "2020" watermark, edge-pinned
             rotating Donate badge, and a blue band that runs to the right edge with photos
             hanging below it */}
 <section id="mission" className="relative overflow-hidden bg-white pb-16 pt-14 sm:pb-24 sm:pt-20">
   <div className="pointer-events-none absolute inset-x-0 top-[24%] overflow-hidden sm:top-[22%]" aria-hidden>
     <span className="block select-none text-center font-bold leading-none tracking-tight text-brand-sky-tint text-[34vw] lg:text-[min(36vw,36rem)]">
-      1978
+      2020
     </span>
   </div>
 
@@ -151,7 +154,7 @@ export default function HomeContent() {
       <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-14">
         <div>
           <h2 className="text-xl font-extrabold tracking-tight sm:text-2xl">
-            Serving those in need since 1978
+            Serving those in need since 2020
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-white/85">
             Globally, billions still lack access to safe systems of care.
@@ -177,7 +180,7 @@ export default function HomeContent() {
       </div>
     </div>
 
-    {/* Photos hanging below the band, with the 1978 showing behind them */}
+    {/* Photos hanging below the band, with the 2020 showing behind them */}
     <div className="relative flex items-end gap-5 px-6 sm:px-10">
       <div className="relative -mt-6 aspect-[4/3] w-[62%] max-w-[22rem] overflow-hidden shadow-xl sm:-mt-10">
         <Image
