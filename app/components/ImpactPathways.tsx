@@ -163,7 +163,7 @@ export default function ImpactPathways() {
                     </span>
                     <span
                       className={`mt-1.5 block text-[13px] leading-relaxed ${
-                        isSelected ? 'text-brand-navy/80' : 'text-brand-navy/65'
+                        isSelected ? 'text-white/90' : 'text-brand-navy/80'
                       }`}
                     >
                       {path.body}
