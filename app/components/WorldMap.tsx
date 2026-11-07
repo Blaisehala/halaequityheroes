@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { worldDots } from "../lib/worldDots";
+import Eyebrow from "./Eyebrow";
 
 const dots = worldDots.points.split(" ").map((pair, i) => {
   const [x, y] = pair.split(",").map(Number);
@@ -36,8 +37,8 @@ export default function WorldMap() {
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid items-end gap-8 lg:grid-cols-[1fr_auto]">
           <div className="max-w-2xl">
-            <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand-blue">Around the world</p>
-            <h2 className="mt-3 font-display text-4xl text-brand-navy sm:text-5xl">A global family of Heroes</h2>
+            <Eyebrow>Around the world</Eyebrow>
+            <h2 className="mt-4 font-display text-4xl text-brand-navy sm:text-5xl">A global family of Heroes</h2>
             <p className="mt-5 text-lg leading-relaxed text-slate-600">
               We are carried by a family of volunteers from around the world — from
               our organisers, nurses, and mentors to our volunteer teachers,

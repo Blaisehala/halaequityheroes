@@ -35,6 +35,7 @@ export default function DonatePage() {
       </PageHero>
 
       <StatementBlock
+        eyebrow="Our promise"
         title="Every community gift goes to the work"
         body="Community contributions primarily fund grants to grassroots partners, tools to support their work, and the minimal infrastructure needed to keep the network safe and accountable."
         badge={{

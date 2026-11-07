@@ -56,7 +56,7 @@ export default function MissionPage() {
         intro="Traditional philanthropy often leaves the most impacted people out of the room. Hala Equity Heroes flips the script by moving decisions, resources, and storytelling power into the hands of community organizers, educators, caregivers, and youth leaders."
       />
 
-      <ZigZagRows title="Our three pillars" rows={pillars} />
+      <ZigZagRows eyebrow="What guides us" title="Our three pillars" rows={pillars} />
 
       <CaptionPhoto
         eyebrow="Why we care"
@@ -76,12 +76,13 @@ export default function MissionPage() {
       </CaptionPhoto>
 
       <ValueBento
+        eyebrow="Our values"
         title="What we stand for"
         intro="The commitments behind everything we do."
         items={values}
       />
 
-      <NewsletterSignup variant="outlined" title="Get monthly community notes" />
+      <NewsletterSignup variant="headline" title="Get monthly community notes" />
     </main>
   );
 }

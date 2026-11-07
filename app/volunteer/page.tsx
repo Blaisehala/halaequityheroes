@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import PageHero from "../components/PageHero";
-import IconGrid from "../components/IconGrid";
 import TimelineSteps from "../components/TimelineSteps";
-import IconChip, { icons } from "../components/IconChip";
+import Eyebrow, { logoCycle } from "../components/Eyebrow";
+import { icons } from "../components/IconChip";
 import { pageMetadata } from "../lib/seo";
-import { photos } from "../lib/photos";
+import { photos, type Photo } from "../lib/photos";
 
 export const metadata: Metadata = pageMetadata({
   title: "Volunteer",
@@ -15,22 +15,43 @@ export const metadata: Metadata = pageMetadata({
   path: "/volunteer",
 });
 
-const roles = ["Product", "Data", "Operations", "Storytelling", "Mentoring", "Community organising"];
-
-const requirements = [
-  "A commitment to equity",
-  "A willingness to learn",
-  "Respect for community leadership",
+const teams = [
+  { title: "Product", body: "Shape the tools and services community partners rely on.", icon: icons.bolt },
+  { title: "Data", body: "Help partners understand needs and show the difference they make.", icon: icons.eye },
+  { title: "Operations", body: "Keep projects running smoothly behind the scenes.", icon: icons.clipboard },
+  { title: "Storytelling", body: "Amplify lived experience through words, photos, and film.", icon: icons.chat },
+  { title: "Mentoring", body: "Share your experience with grassroots and youth leaders.", icon: icons.academic },
+  { title: "Community organising", body: "Bring people together and help start local circles.", icon: icons.users },
 ];
 
-const reasons = [
-  { title: "Flexible commitment", body: "Give 10 minutes a month or launch a full chapter.", icon: icons.clipboard },
-  { title: "Pause any time", body: "Change or pause your involvement whenever you need to.", icon: icons.pause },
-  { title: "Community-led", body: "Work alongside local partners who lead on priorities and design.", icon: icons.users },
-  { title: "Every skill counts", body: "Product, data, operations, storytelling — your craft can power local campaigns.", icon: icons.bolt },
-  { title: "Learn as you go", body: "We welcome people at every stage of their journey.", icon: icons.academic },
-  { title: "A global family", body: "Join organisers, nurses, mentors, teachers, and technicians from around the world.", icon: icons.globe },
+const pledge = [
+  { title: "A commitment to equity", body: "You believe quality care should reach everyone who needs it." },
+  { title: "A willingness to learn", body: "We welcome people at every stage of their journey." },
+  { title: "Respect for community leadership", body: "Local partners lead on priorities and design — Heroes support them." },
 ];
+
+type Tile = { kind: "photo"; photo: Photo; className: string } | { kind: "reason"; title: string; body: string; className: string };
+
+// Photos and reasons woven into one mosaic (12-column grid on large screens)
+const mosaic: Tile[] = [
+  { kind: "photo", photo: photos.caregiverGroup, className: "lg:col-span-5 lg:row-span-2 aspect-[4/3] lg:aspect-auto" },
+  { kind: "reason", title: "Flexible commitment", body: "Give 10 minutes a month or launch a full chapter.", className: "lg:col-span-4 bg-brand-navy text-white" },
+  { kind: "reason", title: "Pause any time", body: "Change or pause your involvement whenever you need to.", className: "lg:col-span-3 bg-white" },
+  { kind: "reason", title: "Every skill counts", body: "Your craft can power local campaigns.", className: "lg:col-span-3 bg-white" },
+  { kind: "photo", photo: photos.bestFriends, className: "lg:col-span-4 aspect-[4/3]" },
+  { kind: "reason", title: "Community-led", body: "Work alongside local partners who lead on priorities and design.", className: "lg:col-span-4 bg-white" },
+  { kind: "reason", title: "Learn as you go", body: "We welcome people at every stage of their journey.", className: "lg:col-span-4 bg-brand-blue text-white" },
+  { kind: "photo", photo: photos.redWall, className: "lg:col-span-4 aspect-[4/3]" },
+  { kind: "reason", title: "A global family", body: "Join organisers, nurses, mentors, teachers, and technicians from around the world.", className: "sm:col-span-2 lg:col-span-12 bg-white" },
+];
+
+function TeamIcon({ d }: { d: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d={d} />
+    </svg>
+  );
+}
 
 export default function VolunteerPage() {
   return (
@@ -43,68 +64,79 @@ export default function VolunteerPage() {
         intro="Join a project team in product, data, operations, or storytelling. We welcome people at every stage of their journey."
       />
 
-      <section className="bg-brand-sky-tint pb-20 sm:pb-24">
-        <div className="mx-auto grid max-w-6xl items-start gap-12 px-6 lg:grid-cols-[1.2fr_1fr]">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand-blue">Where you can help</p>
-            <h2 className="mt-3 font-display text-4xl text-brand-navy sm:text-5xl">Project teams</h2>
-            <ul className="mt-8 flex flex-wrap gap-3">
-              {roles.map((r) => (
-                <li key={r} className="bg-white px-5 py-2.5 text-sm font-bold text-brand-navy ring-1 ring-brand-sky-tint-deep">
-                  {r}
-                </li>
-              ))}
-            </ul>
-
-            <h3 className="mt-12 text-xl font-extrabold text-brand-navy">All we ask for</h3>
-            <ul className="mt-5 space-y-4">
-              {requirements.map((req) => (
-                <li key={req} className="flex items-center gap-3 text-slate-600">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-green/15 text-xs font-bold text-brand-teal">✓</span>
-                  {req}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <aside className="overflow-hidden bg-brand-navy text-white">
-            <div className="relative aspect-[4/3]">
-              <Image src={photos.orangeShirt.src} alt={photos.orangeShirt.alt} fill sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover object-[center_30%]" />
+      {/* Project teams: one card per team, each with a logo-colour stripe */}
+      <section className="bg-brand-sky-tint px-6 pb-20 sm:pb-24">
+        <div className="mx-auto max-w-6xl">
+          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+            <div className="max-w-xl">
+              <Eyebrow>Where you can help</Eyebrow>
+              <h2 className="mt-4 font-display text-4xl text-brand-navy sm:text-5xl">Find your project team</h2>
             </div>
-            <div className="p-8 sm:p-10">
-            <IconChip d={icons.bolt} tone="amber" />
-            <h2 className="mt-6 text-2xl font-extrabold">Offer your skills</h2>
-            <p className="mt-3 leading-relaxed text-white/80">
-              Tell us your skills and availability. We&apos;ll match you with
-              initiatives that align with your values and capacity.
+            <p className="max-w-sm leading-relaxed text-slate-600">
+              Tell us which team suits you — we&apos;ll match you with initiatives that align with your values and capacity.
             </p>
-            <Link
-              href="/contact"
-              className="mt-8 inline-flex bg-brand-amber px-7 py-3.5 text-sm font-bold text-brand-navy shadow-md shadow-brand-amber/30 transition hover:bg-brand-amber-dark"
-            >
-              Get in touch to volunteer
-            </Link>
-            </div>
-          </aside>
+          </div>
+          <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {teams.map((team, i) => {
+              const colour = logoCycle[i % logoCycle.length];
+              return (
+                <li key={team.title}>
+                  <Link
+                    href="/contact"
+                    className={`group flex h-full flex-col border-t-4 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-lg ${colour.border}`}
+                  >
+                    <span className={colour.text}>
+                      <TeamIcon d={team.icon} />
+                    </span>
+                    <h3 className="mt-5 text-xl font-extrabold text-brand-navy">{team.title}</h3>
+                    <p className="mt-2 flex-1 leading-relaxed text-slate-600">{team.body}</p>
+                    <span className="mt-6 text-sm font-bold text-brand-blue transition group-hover:translate-x-1">
+                      Join this team →
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </section>
 
-      <IconGrid title="Why volunteer with us" items={reasons} background="white" />
-
-      {/* Staggered photo trio — offset heights, used only on this page */}
-      <section className="bg-brand-sky-tint px-6 pb-28 pt-20 sm:pb-36 sm:pt-24">
+      {/* Why volunteer: photos and reasons woven into one mosaic */}
+      <section className="bg-brand-sky-tint-deep px-6 py-20 sm:py-24">
         <div className="mx-auto max-w-6xl">
-          <h2 className="max-w-xl font-display text-4xl text-brand-navy sm:text-5xl">People at every stage of their journey</h2>
-          <ul className="mt-12 grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3">
-            {[photos.caregiverGroup, photos.bestFriends, photos.redWall].map((photo, i) => (
-              <li
-                key={photo.src}
-                className={`relative aspect-[3/4] overflow-hidden ${i === 1 ? "md:translate-y-16" : ""} ${i === 2 ? "col-span-2 aspect-[16/10] md:col-span-1 md:aspect-[3/4]" : ""}`}
-              >
-                <Image src={photo.src} alt={photo.alt} fill sizes="(min-width: 768px) 33vw, 50vw" className="object-cover" />
+          <Eyebrow>Why join</Eyebrow>
+          <h2 className="mt-4 max-w-2xl font-display text-4xl text-brand-navy sm:text-5xl">Why volunteer with us</h2>
+          <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-12 lg:auto-rows-[minmax(11rem,auto)]">
+            {mosaic.map((tile) =>
+              tile.kind === "photo" ? (
+                <li key={tile.photo.src} className={`relative overflow-hidden ${tile.className}`}>
+                  <Image src={tile.photo.src} alt={tile.photo.alt} fill sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw" className="object-cover" />
+                </li>
+              ) : (
+                <li key={tile.title} className={`flex flex-col justify-end p-7 ${tile.className}`}>
+                  <h3 className="font-display text-3xl">{tile.title}</h3>
+                  <p className={`mt-2 leading-relaxed ${tile.className.includes("text-white") ? "text-white/80" : "text-slate-600"}`}>{tile.body}</p>
+                </li>
+              )
+            )}
+          </ul>
+        </div>
+      </section>
+
+      {/* The pledge: what we ask of every Hero */}
+      <section className="bg-brand-navy px-6 py-20 text-white sm:py-24">
+        <div className="mx-auto max-w-6xl">
+          <Eyebrow tone="dark">All we ask for</Eyebrow>
+          <h2 className="mt-4 max-w-2xl font-display text-4xl sm:text-5xl">The Hero pledge</h2>
+          <ol className="mt-12 grid gap-10 md:grid-cols-3">
+            {pledge.map((item, i) => (
+              <li key={item.title} className={`border-l-4 pl-6 ${logoCycle[i].border}`}>
+                <span className="font-display text-6xl leading-none text-white/25">0{i + 1}</span>
+                <h3 className="mt-4 text-2xl font-extrabold">{item.title}</h3>
+                <p className="mt-2 leading-relaxed text-white/75">{item.body}</p>
               </li>
             ))}
-          </ul>
+          </ol>
         </div>
       </section>
 
@@ -118,6 +150,35 @@ export default function VolunteerPage() {
           { title: "Join a project team", body: "Work in product, data, operations, or storytelling alongside community-led partners." },
         ]}
       />
+
+      {/* Closing invitation */}
+      <section className="relative isolate overflow-hidden bg-brand-navy text-white">
+        <Image src={photos.orangeShirt.src} alt={photos.orangeShirt.alt} fill sizes="100vw" className="-z-20 object-cover object-[center_30%]" />
+        <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-navy via-brand-navy/85 to-brand-navy/20" />
+        <div className="mx-auto max-w-6xl px-6 py-24 sm:py-32">
+          <div className="max-w-xl">
+            <Eyebrow tone="dark">Ready when you are</Eyebrow>
+            <h2 className="mt-4 font-display text-5xl leading-[1.05] sm:text-6xl">Ready to start?</h2>
+            <p className="mt-5 text-lg leading-relaxed text-white/85">
+              Tell us your skills and availability, and we&apos;ll find the right place for you.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                href="/contact"
+                className="bg-brand-amber px-8 py-4 text-sm font-bold uppercase tracking-[0.1em] text-brand-navy transition hover:bg-brand-amber-dark"
+              >
+                Get in touch to volunteer
+              </Link>
+              <Link
+                href="/get-involved"
+                className="border-2 border-white/60 px-8 py-[14px] text-sm font-bold uppercase tracking-[0.1em] text-white transition hover:bg-white/10"
+              >
+                See all ways to help
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

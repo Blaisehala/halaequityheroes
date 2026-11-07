@@ -3,13 +3,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import CurvedCarousel from "./CurvedCarousel";
+import WheelCarousel from "./WheelCarousel";
 import ImpactPathways from "./ImpactPathways";
 import WhyWeCare from "./WhyWeCare";
 import WorldMap from "./WorldMap";
 import { photos } from "../lib/photos";
 import { stats } from "../lib/stats";
 import { faqs } from "../lib/faqs";
+import Eyebrow from "./Eyebrow";
 
 const waysToJoin = [
   {
@@ -39,172 +40,162 @@ export default function HomeContent() {
   return (
     <div className="min-h-screen bg-white text-brand-ink">
       <main className="pt-16">
-        {/* Hero with Curved Carousel */}
-<section className="relative min-h-[85vh] sm:min-h-[90vh] md:min-h-0 overflow-hidden bg-brand-navy text-white pb-8">
-  <div className="absolute inset-0 bg-gradient-to-b from-brand-navy/90 via-transparent to-brand-navy/80 z-20 pointer-events-none md:hidden" />
-
-  <div className="relative z-30 mx-auto max-w-6xl px-4 pt-12 sm:pt-16 md:hidden">
-    <div className="bg-brand-navy/70 backdrop-blur-sm p-2">
-    <p className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight text-center mb-6">
-      Changing Lives
-    </p>
-      <p className="mt-4 text-sm leading-relaxed text-white/95 sm:text-base">
-        In regions where resources are scarce, our community-powered
-        initiatives are among the most effective ways to deliver care and
-        equity to those who need it most.
-      </p>
-    </div>
-  </div>
-
-  <div className="absolute inset-0 pt-[240px] sm:pt-[200px] md:pt-8 lg:pt-4">
-    <CurvedCarousel />
-  </div>
-
-  <div className="relative z-30 mx-auto max-w-6xl px-4 pt-[400px] sm:pt-[380px] md:pt-[380px] lg:pt-[360px] hidden md:block">
-    <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight text-center mb-6">
-      Changing Lives
+        {/* Hero: heading only on top, the turning photo wheel rising out of the blue,
+            then the details below the wheel */}
+<section className="relative overflow-hidden bg-brand-navy text-white">
+  <div className="relative z-20 mx-auto max-w-4xl px-6 pt-12 text-center sm:pt-16">
+    <h1 className="whitespace-nowrap text-[clamp(1.3rem,5.6vw,3.75rem)] font-extrabold leading-tight tracking-tight">
+      Quality First, Equity Always
     </h1>
-    <p className="text-base md:text-lg leading-relaxed text-white/95 max-w-3xl mx-auto text-center">
+  </div>
+
+  <div className="relative mt-8 h-[370px] overflow-hidden sm:h-[480px] md:h-[600px]">
+    <WheelCarousel />
+  </div>
+
+  <div className="relative z-20 mx-auto max-w-4xl px-6 pb-16 text-center sm:pb-20">
+    <p className="mx-auto max-w-2xl text-base leading-relaxed text-white/90 md:text-lg">
       In regions where resources are scarce, our community-powered
       initiatives are among the most effective ways to deliver care and
       equity to those who need it most.
     </p>
   </div>
+</section>
 
-  <div className="relative z-30 mx-auto max-w-6xl px-4 sm:px-6 mt-[520px] sm:mt-[460px] md:mt-12">
-    <ul className="flex flex-wrap justify-center gap-4 sm:gap-6">
+{/* Impact numbers straddle the dark blue banner and the white section below it */}
+<div className="bg-[linear-gradient(to_bottom,var(--color-brand-navy)_50%,#ffffff_50%)] px-6 pb-2">
+    <ul className="flex flex-wrap justify-center gap-5 sm:gap-8">
       {stats.map((stat) => (
         <li
           key={stat.label}
-          className="flex items-center gap-4 bg-brand-navy/90 px-6 py-4 shadow-lg ring-1 ring-white/15 backdrop-blur-md md:bg-white/10"
+          className="flex w-full max-w-sm items-center gap-5 bg-white px-8 py-7 shadow-2xl ring-1 ring-brand-navy/10 sm:w-auto sm:min-w-[19rem]"
         >
-          <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-brand-amber/15 text-brand-amber">
-            <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+          <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-brand-amber/20 text-brand-navy">
+            <svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
               <path d={stat.icon} />
             </svg>
           </span>
           <span>
-            <span className="block text-2xl font-extrabold leading-tight text-white sm:text-3xl">{stat.value}</span>
-            <span className="block text-sm text-white/80">{stat.label}</span>
+            <span className="block text-3xl font-extrabold leading-tight text-brand-navy sm:text-4xl">{stat.value}</span>
+            <span className="block text-base text-slate-600">{stat.label}</span>
           </span>
         </li>
       ))}
     </ul>
-  </div>
-</section>
+</div>
 
-        {/* Mission */}
-<section id="mission" className="relative mt-0 overflow-hidden bg-white pb-28 pt-10 sm:pb-32 sm:pt-14">
-  <div className="pointer-events-none absolute inset-x-0 top-[18%] overflow-hidden" aria-hidden>
-    <span className="block select-none pl-[1%] font-semibold leading-none tracking-tight text-brand-sky-tint-deep text-[min(44vw,30rem)]">
+        {/* Mission — layout modelled on mercyships.org: huge "1978" watermark, edge-pinned
+            rotating Donate badge, and a blue band that runs to the right edge with photos
+            hanging below it */}
+<section id="mission" className="relative overflow-hidden bg-white pb-16 pt-14 sm:pb-24 sm:pt-20">
+  <div className="pointer-events-none absolute inset-x-0 top-[24%] overflow-hidden sm:top-[22%]" aria-hidden>
+    <span className="block select-none text-center font-bold leading-none tracking-tight text-brand-sky-tint text-[34vw] lg:text-[min(36vw,36rem)]">
       1978
     </span>
   </div>
 
-  <div className="relative z-10 mx-auto flex max-w-6xl items-start gap-4 px-4 sm:px-8">
-    <Link
-      href="/donate"
-      aria-label="Donate"
-      className="group relative mt-2 flex h-28 w-28 shrink-0 items-center justify-center sm:h-32 sm:w-32 lg:h-36 lg:w-36"
-    >
-      <svg
-        viewBox="0 0 200 200"
-        className="absolute inset-0 h-full w-full animate-[spin_22s_linear_infinite]"
-      >
-        <defs>
-          <path
-            id="donate-circle"
-            d="M 100,100 m -72,0 a 72,72 0 1,1 144,0 a 72,72 0 1,1 -144,0"
-          />
-        </defs>
-        <text fill="var(--color-brand-sky)" fontSize="14" fontWeight="600">
-          <textPath href="#donate-circle">
-            DONATE&nbsp;&nbsp;&nbsp;DONATE&nbsp;&nbsp;&nbsp;DONATE&nbsp;&nbsp;&nbsp;DONATE&nbsp;&nbsp;&nbsp;
-          </textPath>
-        </text>
-      </svg>
-      <span className="text-3xl font-light text-brand-amber transition group-hover:scale-110 sm:text-4xl">
-        +
-      </span>
-    </Link>
+  {/* Rotating badge pinned to the left edge, partly off-screen */}
+  <Link
+    href="/donate"
+    aria-label="Donate"
+    className="group absolute -left-14 top-[30%] z-10 hidden h-48 w-48 items-center justify-center md:flex lg:h-56 lg:w-56"
+  >
+    <svg viewBox="0 0 200 200" className="absolute inset-0 h-full w-full animate-[spin_22s_linear_infinite]" aria-hidden>
+      <defs>
+        <path id="donate-circle" d="M 100,100 m -70,0 a 70,70 0 1,1 140,0 a 70,70 0 1,1 -140,0" />
+      </defs>
+      <text fill="var(--color-brand-blue)" fontSize="24" fontWeight="700" letterSpacing="2">
+        <textPath href="#donate-circle">DONATE · DONATE · DONATE ·</textPath>
+      </text>
+    </svg>
+    <span className="text-6xl font-light text-brand-amber transition group-hover:scale-110">+</span>
+  </Link>
 
+  <div className="relative z-10 mx-auto max-w-7xl px-6">
     <motion.div
       initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="mx-auto max-w-md pt-2 text-center sm:pt-4"
+      className="max-w-md md:ml-[45%]"
     >
-      <p className="text-sm font-semibold leading-snug text-brand-navy sm:text-[15px]">
-        Over 90% of lasting change starts in community. Our
-        circles are the best way to reach people in great need.
+      <p className="text-lg font-bold leading-snug text-brand-navy sm:text-xl">
+        Over 90% of lasting change starts in community. Our circles are
+        the best way to reach people in great need.
       </p>
-      <p className="mt-3 text-sm leading-relaxed text-slate-600">
+      <p className="mt-4 text-sm leading-relaxed text-slate-600">
         If you want to join a volunteer community to help us offer a
         helping hand, consider making a donation. You can join the rest
         of us that care. Your donation can be given now and in the future.
       </p>
-      <div className="mt-5 flex items-center justify-center gap-3">
+      <div className="mt-6 flex items-center gap-3">
         <Link
           href="/volunteer"
-          className="inline-flex h-10 items-center justify-center border border-slate-300 bg-white px-6 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:text-slate-800"
+          className="inline-flex h-10 items-center justify-center border-2 border-brand-navy bg-white px-7 text-sm font-bold text-brand-navy transition hover:bg-brand-sky-tint"
         >
-          volunteer
+          Volunteer
         </Link>
         <Link
           href="/donate"
-          className="inline-flex h-10 items-center justify-center bg-brand-amber px-7 text-sm font-bold text-brand-navy shadow-sm transition hover:bg-brand-amber-dark"
+          className="inline-flex h-10 items-center justify-center bg-brand-amber px-8 text-sm font-bold text-brand-navy transition hover:bg-brand-amber-dark"
         >
-          donate
+          Donate
         </Link>
       </div>
     </motion.div>
   </div>
 
-  <div className="relative z-10 mt-20 sm:mt-28">
-    <div className="bg-brand-blue text-white">
-      <div className="mx-auto grid max-w-6xl items-center gap-8 px-6 py-8 sm:px-10 lg:grid-cols-[minmax(0,1fr)_240px_minmax(0,1.35fr)] lg:gap-10 lg:py-9">
+  {/* Blue band from about a quarter in to the right edge */}
+  <div className="relative z-10 mt-24 sm:mt-40 md:ml-[22%]">
+    <div className="bg-brand-blue px-6 pb-10 pt-10 text-white sm:px-10 md:pb-12">
+      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-14">
         <div>
-          <h2 className="text-lg font-semibold leading-snug tracking-tight sm:text-xl">
+          <h2 className="text-xl font-extrabold tracking-tight sm:text-2xl">
             Serving those in need since 1978
           </h2>
-          <p className="mt-3 text-xs leading-relaxed text-white/80">
+          <p className="mt-4 text-sm leading-relaxed text-white/85">
             Globally, billions still lack access to safe systems of care.
             Children and families wait for resources that never arrive
             through traditional philanthropy.
           </p>
         </div>
-
-        <div className="relative mx-auto w-[220px] lg:w-[240px]">
-          <div className="relative aspect-[3/4] w-full overflow-hidden shadow-2xl lg:-mb-20 lg:-mt-14">
-            <Image
-              src="/images/hero2.jpg"
-              alt="A young boy pointing at the camera beside a smiling friend"
-              fill
-              className="object-cover"
-              sizes="240px"
-            />
-          </div>
-          <div className="absolute -bottom-6 -right-10 h-[72px] w-[72px] overflow-hidden shadow-lg sm:h-20 sm:w-20 lg:-bottom-8 lg:-right-14">
-            <Image
-              src="/images/hero5.jpg"
-              alt="Children smiling and waving from the windows of a school bus"
-              fill
-              className="object-cover"
-              sizes="80px"
-            />
-          </div>
-        </div>
-
         <div>
-          <p className="text-xs leading-relaxed text-white/90 sm:text-[13px]">
+          <p className="text-sm leading-relaxed text-white/85 lg:pt-11">
             We are carried by a family of volunteers from around the world,
             from our organizers, nurses, and mentors to our volunteer
             teachers, technicians, and those who are just ready to start.
             Join us as a volunteer and help bring equity and care to people
             in communities far from resources.
           </p>
+          <Link href="/mission" className="group mt-5 inline-flex items-center gap-3 text-sm font-bold text-brand-amber">
+            See our mission
+            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-amber text-brand-navy transition group-hover:translate-x-1" aria-hidden>
+              →
+            </span>
+          </Link>
         </div>
+      </div>
+    </div>
+
+    {/* Photos hanging below the band, with the 1978 showing behind them */}
+    <div className="relative flex items-end gap-5 px-6 sm:px-10">
+      <div className="relative -mt-6 aspect-[4/3] w-[62%] max-w-[22rem] overflow-hidden shadow-xl sm:-mt-10">
+        <Image
+          src="/images/hero2.jpg"
+          alt="A young boy pointing at the camera beside a smiling friend"
+          fill
+          className="object-cover"
+          sizes="(min-width: 640px) 22rem, 62vw"
+        />
+      </div>
+      <div className="relative mt-6 aspect-square w-[28%] max-w-[8rem] overflow-hidden shadow-lg">
+        <Image
+          src="/images/hero5.jpg"
+          alt="Children smiling and waving from the windows of a school bus"
+          fill
+          className="object-cover"
+          sizes="8rem"
+        />
       </div>
     </div>
   </div>
@@ -224,6 +215,7 @@ export default function HomeContent() {
           <div className="mx-auto max-w-5xl px-6">
             <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
               <div className="max-w-2xl space-y-3">
+                <Eyebrow tone="dark">Get involved</Eyebrow>
                 <h2 className="text-3xl font-extrabold tracking-tight">
                   There is a role for every kind of Hero.
                 </h2>
@@ -302,9 +294,9 @@ export default function HomeContent() {
         {/* FAQ */}
         <section id="faq" className="bg-brand-sky-tint py-16 sm:py-24">
           <div className="mx-auto max-w-3xl px-6">
-            <p className="text-center text-xs font-bold uppercase tracking-[0.22em] text-brand-blue">
+            <Eyebrow align="center">
               FAQ
-            </p>
+            </Eyebrow>
             <h2 className="mt-3 text-center text-3xl font-extrabold tracking-tight text-brand-navy sm:text-4xl">
               Frequently asked questions
             </h2>

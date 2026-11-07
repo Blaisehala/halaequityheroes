@@ -8,6 +8,7 @@ import { faqs } from "../lib/faqs";
 import { slugify } from "../lib/slugify";
 import { pageMetadata } from "../lib/seo";
 import { photos } from "../lib/photos";
+import Eyebrow from "../components/Eyebrow";
 
 export const metadata: Metadata = pageMetadata({
   title: "Get Involved",
@@ -102,7 +103,8 @@ export default function GetInvolvedPage() {
       {/* Connected arrow blocks */}
       <section className="bg-white px-6 py-20 sm:py-24" aria-labelledby="getting-started">
         <div className="mx-auto max-w-7xl">
-          <h2 id="getting-started" className="font-display text-4xl text-brand-navy sm:text-5xl">
+          <Eyebrow>Getting started</Eyebrow>
+          <h2 id="getting-started" className="mt-4 font-display text-4xl text-brand-navy sm:text-5xl">
             From first click to making a difference
           </h2>
           <ol className="mt-12 flex flex-col gap-2 lg:flex-row lg:gap-0">
@@ -123,7 +125,8 @@ export default function GetInvolvedPage() {
       {/* Ruled, table-style questions */}
       <section className="bg-brand-sky-tint px-6 py-20 sm:py-24">
         <div className="mx-auto max-w-7xl">
-          <h2 className="font-display text-4xl text-brand-navy sm:text-5xl">Before you join</h2>
+          <Eyebrow>Questions</Eyebrow>
+          <h2 className="mt-4 font-display text-4xl text-brand-navy sm:text-5xl">Before you join</h2>
           <dl className="mt-12 border-b-2 border-brand-navy">
             {faqs.map((faq) => (
               <div key={faq.q} className="grid gap-3 border-t-2 border-brand-navy py-8 md:grid-cols-[1fr_1.4fr] md:gap-16">
@@ -135,7 +138,7 @@ export default function GetInvolvedPage() {
         </div>
       </section>
 
-      <NewsletterSignup variant="band" title="Never miss a way to help" />
+      <NewsletterSignup variant="benefits" title="Never miss a way to help" />
     </main>
   );
 }

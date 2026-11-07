@@ -22,7 +22,16 @@ type PageHeroProps = {
 };
 
 function Eyebrow({ children, className = "text-brand-amber" }: { children: React.ReactNode; className?: string }) {
-  return <p className={`text-xs font-bold uppercase tracking-[0.22em] ${className}`}>{children}</p>;
+  return (
+    <p className={`flex items-center gap-3 text-xs font-bold uppercase tracking-[0.22em] ${className}`}>
+      <span aria-hidden className="flex">
+        {["bg-logo-pink", "bg-logo-orange", "bg-logo-green", "bg-logo-blue"].map((c) => (
+          <span key={c} className={`h-1 w-3 ${c}`} />
+        ))}
+      </span>
+      {children}
+    </p>
+  );
 }
 
 export default function PageHero({ eyebrow, title, intro, image, variant = "band", children }: PageHeroProps) {
@@ -53,7 +62,7 @@ export default function PageHero({ eyebrow, title, intro, image, variant = "band
         <Image src={image.src} alt={image.alt} fill priority sizes="100vw" className="-z-20 object-cover" />
         <div aria-hidden className="absolute inset-0 -z-10 bg-brand-navy/65" />
         <div className="mx-auto max-w-4xl px-6 py-24 text-center">
-          <Eyebrow>{eyebrow}</Eyebrow>
+          <Eyebrow className="justify-center text-brand-amber">{eyebrow}</Eyebrow>
           <h1 className="mt-5 font-display text-5xl leading-[1.05] sm:text-7xl">{title}</h1>
           <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-white/85">{intro}</p>
         </div>
@@ -84,7 +93,7 @@ export default function PageHero({ eyebrow, title, intro, image, variant = "band
       <section className="relative bg-white pt-28 sm:pt-32">
         <div aria-hidden className="absolute inset-x-0 bottom-0 h-1/4 bg-brand-sky-tint" />
         <div className="relative mx-auto max-w-3xl px-6 text-center">
-          <Eyebrow className="text-brand-blue">{eyebrow}</Eyebrow>
+          <Eyebrow className="justify-center text-brand-blue">{eyebrow}</Eyebrow>
           <h1 className="mt-4 font-display text-5xl leading-[1.05] text-brand-navy sm:text-7xl">{title}</h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-600">{intro}</p>
         </div>

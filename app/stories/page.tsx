@@ -3,9 +3,11 @@ import Image from "next/image";
 import PageHero from "../components/PageHero";
 import DarkStraddle from "../components/DarkStraddle";
 import NewsletterSignup from "../components/NewsletterSignup";
+import StoryExplorer, { type StoryCategory } from "../components/StoryExplorer";
 import { slugify } from "../lib/slugify";
 import { pageMetadata } from "../lib/seo";
 import { photos } from "../lib/photos";
+import Eyebrow from "../components/Eyebrow";
 
 export const metadata: Metadata = pageMetadata({
   title: "Stories",
@@ -14,29 +16,58 @@ export const metadata: Metadata = pageMetadata({
   path: "/stories",
 });
 
-const [featured, ...more] = [
+// Story copy draws on what the site already says about each area of work.
+// TODO: replace or extend with real stories from community partners (with permission).
+const categories: StoryCategory[] = [
   {
-    title: "Community Equity Funds",
     tag: "Funding",
-    tagClass: "bg-brand-sky-tint text-brand-blue",
-    image: photos.siblingsDressedUp,
+    tone: "pink" as const,
+    title: "Community Equity Funds",
     body: "Micro‑grants to grassroots groups led by women, youth, and marginalized communities.",
+    image: photos.siblingsDressedUp,
+    stories: [
+      { title: "Women-led groups", body: "Micro-grants that put resources directly in the hands of women leading change in their communities." },
+      { title: "Youth-led projects", body: "Backing young leaders with the funding to turn their ideas for equity into action." },
+      { title: "Marginalized communities", body: "Directing resources to communities closest to the challenge and furthest from support." },
+    ],
   },
   {
-    title: "Skills for Justice",
     tag: "Mentorship",
-    tagClass: "bg-amber-100 text-amber-700",
-    image: photos.boysLaughing,
+    tone: "amber" as const,
+    title: "Skills for Justice",
     body: "Designers, engineers, and operators volunteering their craft to power local campaigns.",
+    image: photos.boysLaughing,
+    stories: [
+      { title: "Design for change", body: "Volunteer designers helping local campaigns tell their story clearly and powerfully." },
+      { title: "Tools that work", body: "Engineers building the simple tools community partners need to support their work." },
+      { title: "Running smoothly", body: "Operators lending their experience so partners can focus on the people they serve." },
+    ],
   },
   {
-    title: "Stories that Shift Power",
     tag: "Storytelling",
-    tagClass: "bg-brand-blue/10 text-brand-blue",
-    image: photos.brotherSister,
+    tone: "blue" as const,
+    title: "Stories that Shift Power",
     body: "Storytelling labs that amplify lived experience and challenge the status quo.",
+    image: photos.brotherSister,
+    stories: [
+      { title: "Storytelling labs", body: "Spaces where community members shape and share their own stories, in their own words." },
+      { title: "Amplifying lived experience", body: "Putting the voices of people closest to the challenge at the centre of the conversation." },
+      { title: "Challenging the status quo", body: "Stories that question how things are done — and point to how they could be better." },
+    ],
   },
-];
+  {
+    tag: "Health & Care",
+    tone: "green" as const,
+    title: "Care for Every Child",
+    body: "Behind every sickle cell diagnosis is a child with a name, a laugh, and a future still being written.",
+    image: photos.playingFriends,
+    stories: [
+      { title: "Supporting a child", body: "Helping create moments of comfort, care, and opportunity for children living with sickle cell." },
+      { title: "Supporting a family", body: "Helping families navigate the challenges that come with sickle cell — so no one faces it alone." },
+      { title: "Learning & advocacy", body: "Creating greater understanding around sickle cell, so schools and communities know how to help." },
+    ],
+  },
+].map((cat) => ({ ...cat, id: slugify(cat.title) }));
 
 export default function StoriesPage() {
   return (
@@ -51,31 +82,11 @@ export default function StoriesPage() {
 
       <section className="bg-white py-16 sm:py-20">
         <div className="mx-auto max-w-6xl px-6">
-          {/* Featured story: wide, magazine-style */}
-          <article id={slugify(featured.title)} className="group grid scroll-mt-24 overflow-hidden bg-brand-navy text-white lg:grid-cols-[1.3fr_1fr]">
-            <div className="relative aspect-[4/3] overflow-hidden lg:aspect-auto lg:min-h-[26rem]">
-              <Image src={featured.image.src} alt={featured.image.alt} fill sizes="(min-width: 1024px) 60vw, 100vw" className="object-cover transition duration-500 group-hover:scale-105" />
-            </div>
-            <div className="flex flex-col justify-center p-8 sm:p-12">
-              <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand-amber">Featured · {featured.tag}</p>
-              <h2 className="mt-4 font-display text-4xl sm:text-5xl">{featured.title}</h2>
-              <p className="mt-4 text-lg leading-relaxed text-white/80">{featured.body}</p>
-            </div>
-          </article>
-
-          <div className="mt-8 grid gap-8 md:grid-cols-2">
-            {more.map((item) => (
-              <article key={item.title} id={slugify(item.title)} className="group scroll-mt-24">
-                <div className="relative aspect-[16/10] overflow-hidden ">
-                  <Image src={item.image.src} alt={item.image.alt} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover transition duration-500 group-hover:scale-105" />
-                </div>
-                <span className={`mt-6 inline-block px-3 py-1 text-xs font-bold ${item.tagClass}`}>{item.tag}</span>
-                <h2 className="mt-3 text-2xl font-extrabold text-brand-navy">{item.title}</h2>
-                <p className="mt-2 text-lg leading-relaxed text-slate-600">{item.body}</p>
-              </article>
-            ))}
+          <Eyebrow>Our work, in stories</Eyebrow>
+          <h2 className="mt-4 max-w-2xl font-display text-4xl text-brand-navy sm:text-5xl">Choose a story to explore</h2>
+          <div className="mt-10">
+            <StoryExplorer categories={categories} />
           </div>
-
           <p className="mt-12 text-center text-sm text-slate-500">
             New initiatives and stories are added by community partners on a rolling basis.
           </p>
@@ -84,13 +95,13 @@ export default function StoriesPage() {
 
       {/* Gallery strip: mixed shapes aligned along the bottom edge */}
       <section className="bg-white px-6 pb-20 sm:pb-24">
-        <div className="mx-auto max-w-6xl border-t-2 border-brand-navy pt-10">
-          <h2 className="font-display text-4xl text-brand-navy sm:text-5xl">From our communities</h2>
-          <ul className="mt-10 grid grid-cols-2 items-end gap-4 md:grid-cols-[1.4fr_1fr_1.4fr] md:gap-6">
+        <div className="mx-auto max-w-6xl border-t-2 border-brand-pink pt-10">
+          <Eyebrow>Gallery</Eyebrow>
+          <h2 className="mt-4 font-display text-4xl text-brand-navy sm:text-5xl">From our communities</h2>
+          <ul className="mt-10 grid items-end gap-4 sm:grid-cols-[1.6fr_1fr] md:gap-6">
             {[
-              { photo: photos.traditionalDress, shape: "col-span-2 aspect-[4/3] md:col-span-1" },
+              { photo: photos.traditionalDress, shape: "aspect-[4/3]" },
               { photo: photos.sistersDoorway, shape: "aspect-[3/4]" },
-              { photo: photos.playingFriends, shape: "aspect-[3/4] md:aspect-[4/3]" },
             ].map(({ photo, shape }) => (
               <li key={photo.src} className={`relative overflow-hidden ${shape}`}>
                 <Image src={photo.src} alt={photo.alt} fill sizes="(min-width: 768px) 38vw, 50vw" className="object-cover" />
@@ -101,6 +112,7 @@ export default function StoriesPage() {
       </section>
 
       <DarkStraddle
+        eyebrow="Storytelling labs"
         title="Every story helps shift power"
         intro="Our storytelling labs amplify lived experience and challenge the status quo."
         cardTitle="Share your story"
@@ -112,7 +124,7 @@ export default function StoriesPage() {
         </p>
       </DarkStraddle>
 
-      <NewsletterSignup variant="ticket" title="Stories, straight to your inbox" />
+      <NewsletterSignup variant="stub" title="Stories, straight to your inbox" />
     </main>
   );
 }

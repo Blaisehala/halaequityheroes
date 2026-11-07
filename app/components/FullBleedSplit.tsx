@@ -1,8 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Photo } from "../lib/photos";
+import Eyebrow from "./Eyebrow";
 
 type FullBleedSplitProps = {
+  eyebrow?: string;
   title: string;
   image: Photo;
   link?: { href: string; label: string };
@@ -11,7 +13,7 @@ type FullBleedSplitProps = {
 };
 
 // Edge-to-edge half photo, half navy text panel
-export default function FullBleedSplit({ title, image, link, reverse = false, children }: FullBleedSplitProps) {
+export default function FullBleedSplit({ eyebrow, title, image, link, reverse = false, children }: FullBleedSplitProps) {
   return (
     <section className="grid bg-brand-navy text-white lg:grid-cols-2">
       <div className={`relative min-h-[22rem] lg:min-h-[32rem] ${reverse ? "lg:order-2" : ""}`}>
@@ -19,7 +21,8 @@ export default function FullBleedSplit({ title, image, link, reverse = false, ch
       </div>
       <div className="flex items-center px-6 py-16 sm:px-12 lg:px-16 xl:px-24">
         <div className="max-w-lg">
-          <h2 className="font-display text-4xl sm:text-5xl">{title}</h2>
+          {eyebrow && <Eyebrow tone="dark">{eyebrow}</Eyebrow>}
+          <h2 className="mt-4 font-display text-4xl sm:text-5xl">{title}</h2>
           <div className="mt-6 space-y-4 text-lg leading-relaxed text-white/80">{children}</div>
           {link && (
             <Link

@@ -20,6 +20,10 @@
   - amber:     the single action colour — every primary button (navy text on it)
   - sky-tint (and its deeper shades): pale blue for alternating sections,
     highlights and call-to-action panels — the site uses no cream or beige
+  - pink:      the logo heart — storytelling accent (Stories page, footer strip),
+               never used for buttons
+  - logo-*:    the four logo-heart colours, used as small accents on every page
+               (the bar on each section label, numbered markers) — never buttons
   - green/teal: success ticks only
 */
 @theme {
@@ -35,6 +39,14 @@
   --color-brand-teal: #059669;
   --color-brand-ink: #334155;
   --color-brand-sky-tint-deeper: #c3d6e6;
+  --color-brand-pink: #e41860;
+  --color-brand-pink-tint: #fde8f1;
+
+  /* Logo heart colours: section-label bars and numbered markers, for a sense of home */
+  --color-logo-pink: #e41860;
+  --color-logo-orange: #e8692e;
+  --color-logo-green: #00a862;
+  --color-logo-blue: #3c549c;
 }
 
 body {
@@ -47,6 +59,20 @@ h1,
 h2,
 h3 {
   text-wrap: balance;
+}
+
+/* Home hero photo wheel (WheelCarousel.tsx): continuous turn; the pause button sets data-paused */
+.wheel-spin {
+  animation: wheel-spin 90s linear infinite;
+}
+.wheel-spin[data-paused="true"] {
+  animation-play-state: paused;
+}
+@keyframes wheel-spin {
+  to { transform: rotate(-360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wheel-spin { animation: none; }
 }
 
 /* Animated world map (WorldMap.tsx): west-to-east sweep, then amber twinkles */

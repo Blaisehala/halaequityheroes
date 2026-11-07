@@ -1,15 +1,17 @@
 import Image from "next/image";
 import type { Photo } from "../lib/photos";
+import Eyebrow from "./Eyebrow";
 
 type Value = { title: string; body: string; icon: string; image?: Photo };
 
 // Navy grid of equal-size cards; the first and last are highlighted (with a photo when one is given)
-export default function ValueBento({ title, intro, items }: { title: string; intro?: string; items: Value[] }) {
+export default function ValueBento({ eyebrow, title, intro, items }: { eyebrow?: string; title: string; intro?: string; items: Value[] }) {
   return (
     <section className="bg-brand-navy py-20 text-white sm:py-24">
       <div className="mx-auto max-w-6xl px-6">
         <div className="max-w-2xl">
-          <h2 className="font-display text-4xl sm:text-5xl">{title}</h2>
+          {eyebrow && <Eyebrow tone="dark">{eyebrow}</Eyebrow>}
+          <h2 className="mt-4 font-display text-4xl sm:text-5xl">{title}</h2>
           {intro && <p className="mt-5 text-lg leading-relaxed text-white/75">{intro}</p>}
         </div>
         <ul className="mt-14 grid auto-rows-fr gap-5 sm:grid-cols-2 lg:grid-cols-3">

@@ -1,6 +1,8 @@
 import Link from "next/link";
+import Eyebrow from "./Eyebrow";
 
 type StatementBlockProps = {
+  eyebrow?: string;
   title: string;
   body: string;
   cta?: { href: string; label: string };
@@ -8,11 +10,12 @@ type StatementBlockProps = {
 };
 
 // Big centred statement with a call to action and a "100%"-style badge box underneath
-export default function StatementBlock({ title, body, cta, badge }: StatementBlockProps) {
+export default function StatementBlock({ eyebrow, title, body, cta, badge }: StatementBlockProps) {
   return (
     <section className="bg-white py-20 sm:py-28">
       <div className="mx-auto max-w-3xl px-6 text-center">
-        <h2 className="font-display text-4xl leading-tight text-brand-navy sm:text-6xl">{title}</h2>
+        {eyebrow && <Eyebrow align="center">{eyebrow}</Eyebrow>}
+        <h2 className="mt-4 font-display text-4xl leading-tight text-brand-navy sm:text-6xl">{title}</h2>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-600">{body}</p>
         {cta && (
           <Link

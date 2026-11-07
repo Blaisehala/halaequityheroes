@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { honeypotProps, submitForm, type FormStatus } from "../lib/submitForm";
+import Eyebrow from "./Eyebrow";
 
 const inputClass =
   "w-full border border-transparent bg-brand-sky-tint px-4 py-3.5 text-sm text-brand-ink outline-none transition placeholder:text-slate-500 focus:border-brand-blue focus:bg-white focus:ring-4 focus:ring-brand-blue/10";
@@ -13,7 +14,8 @@ export default function ContactSection() {
 
   return (
     <div>
-      <h2 className="text-3xl font-extrabold tracking-tight text-brand-navy sm:text-4xl">
+      <Eyebrow>Write to us</Eyebrow>
+      <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-brand-navy sm:text-4xl">
         Send us an email
       </h2>
 

@@ -40,6 +40,7 @@ const navItems: NavItem[] = [
       { href: '/stories#community-equity-funds', label: 'Community Equity Funds', description: 'Micro-grants for grassroots groups' },
       { href: '/stories#skills-for-justice', label: 'Skills for Justice', description: 'Volunteers powering local campaigns' },
       { href: '/stories#stories-that-shift-power', label: 'Stories that Shift Power', description: 'Amplifying lived experience' },
+      { href: '/stories#care-for-every-child', label: 'Care for Every Child', description: 'Supporting children living with sickle cell' },
     ],
   },
   { href: '/contact', label: 'Contact' },

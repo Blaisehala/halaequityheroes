@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { motion, useReducedMotion } from 'framer-motion'
 import { Instrument_Serif } from 'next/font/google'
+import Eyebrow from "./Eyebrow";
 
 const instrumentSerif = Instrument_Serif({
   subsets: ['latin'],
@@ -98,9 +99,7 @@ export default function ImpactPathways() {
           transition={{ duration: reduceMotion ? 0 : 0.55, ease: 'easeOut' }}
           className="relative z-10 max-w-xl"
         >
-          <p className="text-xs font-semibold tracking-[0.28em] text-brand-navy/80">
-            FOR CHILDREN LIVING BEYOND THE PAIN
-          </p>
+          <Eyebrow>For children living beyond the pain</Eyebrow>
 
           <h2 className="mt-5 text-[2.35rem] font-semibold leading-[1.05] tracking-tight text-brand-navy sm:text-5xl lg:text-[3.35rem]">
             Every Child Deserves

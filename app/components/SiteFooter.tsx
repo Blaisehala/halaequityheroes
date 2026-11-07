@@ -131,7 +131,7 @@ export default function SiteFooter() {
       {/* Low-poly strip echoing the logo heart */}
       <svg viewBox="0 0 1440 48" preserveAspectRatio="none" className="block h-8 w-full sm:h-10" aria-hidden>
         <polygon points="0,48 0,22 160,36 260,8 260,48" fill="#5ec8f0" />
-        <polygon points="160,36 260,8 260,48 90,48" fill="#3b82c4" />
+        <polygon points="160,36 260,8 260,48 90,48" fill="#e41860" />
         <polygon points="260,8 420,30 520,6 520,48 260,48" fill="#1b5580" />
         <polygon points="420,30 520,6 520,48 360,48" fill="#14406a" />
         <polygon points="520,6 680,28 780,4 780,48 520,48" fill="#2a6fa3" />
@@ -139,7 +139,7 @@ export default function SiteFooter() {
         <polygon points="780,4 940,26 1040,10 1040,48 780,48" fill="#fde68a" />
         <polygon points="940,26 1040,10 1040,48 880,48" fill="#fbbf24" />
         <polygon points="1040,10 1200,32 1300,6 1300,48 1040,48" fill="#f59e0b" />
-        <polygon points="1200,32 1300,6 1300,48 1140,48" fill="#5ec8f0" />
+        <polygon points="1200,32 1300,6 1300,48 1140,48" fill="#e41860" />
         <polygon points="1300,6 1440,24 1440,48 1300,48" fill="#1b5580" />
       </svg>
       <div className="bg-brand-navy px-6 py-4 text-center text-xs text-white/70">

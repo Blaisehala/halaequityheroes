@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Photo } from "../lib/photos";
+import Eyebrow from "./Eyebrow";
 
 type CaptionPhotoProps = {
   eyebrow: string;
@@ -17,8 +18,8 @@ export default function CaptionPhoto({ eyebrow, title, image, tags, link, childr
     <section className="bg-brand-sky-tint py-20 sm:py-24">
       <div className="mx-auto max-w-6xl px-6">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand-blue">{eyebrow}</p>
-          <h2 className="mt-3 font-display text-4xl text-brand-navy sm:text-5xl">{title}</h2>
+          <Eyebrow align="center">{eyebrow}</Eyebrow>
+          <h2 className="mt-4 font-display text-4xl text-brand-navy sm:text-5xl">{title}</h2>
         </div>
         <div className="relative mt-12 aspect-[4/5] overflow-hidden sm:aspect-[16/9]">
           <Image src={image.src} alt={image.alt} fill sizes="(min-width: 1152px) 1104px, 100vw" className="object-cover" />

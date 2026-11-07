@@ -4,6 +4,7 @@ import ContactSection from "../components/ContactSection";
 import { contact } from "../components/SiteFooter";
 import { pageMetadata } from "../lib/seo";
 import { photos } from "../lib/photos";
+import Eyebrow from "../components/Eyebrow";
 
 export const metadata: Metadata = pageMetadata({
   title: "Contact Us",
@@ -62,7 +63,8 @@ export default function ContactPage() {
         <section className="py-16 sm:py-24">
           <div className="mx-auto grid max-w-6xl items-start gap-14 px-6 lg:grid-cols-2 lg:gap-16">
             <div className="lg:pt-10">
-              <h1 className="text-5xl font-extrabold leading-[1.05] tracking-tight text-brand-navy sm:text-6xl">
+              <Eyebrow>Contact us</Eyebrow>
+              <h1 className="mt-4 text-5xl font-extrabold leading-[1.05] tracking-tight text-brand-navy sm:text-6xl">
                 Got Any
                 <br />
                 <span className="relative isolate inline-block">

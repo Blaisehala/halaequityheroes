@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { Instrument_Serif } from 'next/font/google'
+import Eyebrow from "./Eyebrow";
 
 const instrumentSerif = Instrument_Serif({
   subsets: ['latin'],
@@ -70,9 +71,7 @@ export default function WhyWeCare() {
     >
       <div className="mx-auto max-w-5xl px-5 sm:px-8">
         <motion.div {...fade} className="text-center">
-          <p className="text-xs font-semibold tracking-[0.32em] text-brand-navy/80">
-            WHY WE CARE
-          </p>
+          <Eyebrow align="center">Why we care</Eyebrow>
           <h2
             className={`${instrumentSerif.className} mx-auto mt-4 max-w-3xl text-[2.15rem] leading-[1.15] text-brand-navy sm:text-5xl lg:text-[3.4rem]`}
           >

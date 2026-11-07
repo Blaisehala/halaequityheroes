@@ -1,6 +1,8 @@
 import Link from "next/link";
+import Eyebrow from "./Eyebrow";
 
 type DarkStraddleProps = {
+  eyebrow?: string;
   title: string;
   intro: string;
   cardTitle: string;
@@ -9,12 +11,13 @@ type DarkStraddleProps = {
 };
 
 // Navy band whose white card straddles down into a sky-tint section
-export default function DarkStraddle({ title, intro, cardTitle, cta, children }: DarkStraddleProps) {
+export default function DarkStraddle({ eyebrow, title, intro, cardTitle, cta, children }: DarkStraddleProps) {
   return (
     <section className="relative">
       <div aria-hidden className="absolute inset-x-0 bottom-0 h-1/3 bg-brand-sky-tint" />
       <div className="bg-brand-navy px-6 pb-48 pt-20 text-center text-white sm:pt-24">
-        <h2 className="mx-auto max-w-3xl font-display text-4xl sm:text-5xl">{title}</h2>
+        {eyebrow && <Eyebrow align="center" tone="dark">{eyebrow}</Eyebrow>}
+        <h2 className="mt-4 mx-auto max-w-3xl font-display text-4xl sm:text-5xl">{title}</h2>
         <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-white/80">{intro}</p>
       </div>
       <div className="relative mx-auto -mt-36 max-w-4xl px-6 pb-20 sm:pb-24">
