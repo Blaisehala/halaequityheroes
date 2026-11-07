@@ -13,7 +13,7 @@ type PageHeroProps = {
    * - band:      navy band with the photo behind a navy overlay (default)
    * - split:     text on sky tint beside a tall portrait photo with an amber outline
    * - statement: full-bleed photo with a large centred serif statement
-   * - framed:    magazine cover — inset photo with text overlaid
+   * - framed:    magazine cover — full-width photo with text overlaid at the bottom
    * - centered:  centred serif headline with a wide photo underneath
    * - widget:    full-bleed photo with a white card (children) overlaid, like charity: water
    */
@@ -72,16 +72,18 @@ export default function PageHero({ eyebrow, title, intro, image, variant = "band
 
   if (image && variant === "framed") {
     return (
-      <section className="bg-white px-4 pb-6 pt-20 sm:px-6 sm:pt-24">
-        <div className="relative isolate mx-auto flex min-h-[70vh] max-w-7xl items-end overflow-hidden text-white">
-          <Image src={image.src} alt={image.alt} fill priority sizes="(min-width: 1280px) 1280px, 100vw" className="-z-20 object-cover" />
+      <section className="bg-white pt-16">
+        <div className="relative isolate flex min-h-[calc(100svh-4rem)] w-full items-end overflow-hidden text-white sm:min-h-[85vh]">
+          <Image src={image.src} alt={image.alt} fill priority sizes="100vw" className="-z-20 object-cover" />
           <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-t from-brand-navy via-brand-navy/40 to-transparent" />
-          <div className="max-w-3xl p-8 sm:p-14">
-            <span className="inline-block bg-brand-amber px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-brand-navy">
-              {eyebrow}
-            </span>
-            <h1 className="mt-5 font-display text-5xl leading-[1.05] sm:text-7xl">{title}</h1>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/85">{intro}</p>
+          <div className="mx-auto w-full max-w-6xl px-6 pb-12 pt-32 sm:pb-16">
+            <div className="max-w-3xl">
+              <span className="inline-block bg-brand-amber px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-brand-navy">
+                {eyebrow}
+              </span>
+              <h1 className="mt-5 font-display text-5xl leading-[1.05] sm:text-7xl">{title}</h1>
+              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/85">{intro}</p>
+            </div>
           </div>
         </div>
       </section>

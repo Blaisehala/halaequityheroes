@@ -46,6 +46,18 @@ const navItems: NavItem[] = [
   { href: '/contact', label: 'Contact' },
 ]
 
+// Each top-level item takes one logo-heart colour (underline on hover/active, dropdown edge)
+const itemColours = [
+  { line: 'after:bg-logo-pink', edge: 'border-logo-pink' },
+  { line: 'after:bg-logo-orange', edge: 'border-logo-orange' },
+  { line: 'after:bg-logo-green', edge: 'border-logo-green' },
+  { line: 'after:bg-logo-blue', edge: 'border-logo-blue' },
+]
+
+// Underline drawn with ::after; grows in on hover or when the page is active
+const underline =
+  "relative after:absolute after:inset-x-3 after:-bottom-0.5 after:h-[3px] after:origin-left after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100 group-hover:after:scale-x-100 data-[active=true]:after:scale-x-100"
+
 function Chevron({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden className={className}>
@@ -82,7 +94,7 @@ export default function Navigation() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 bg-brand-navy border-b border-white/10">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-brand-navy">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
@@ -103,15 +115,17 @@ export default function Navigation() {
             {/* Desktop navigation */}
             <nav aria-label="Main" className="hidden md:block">
               <ul className="flex items-center gap-1">
-                {navItems.map((item) => {
+                {navItems.map((item, index) => {
                   const active = isActive(item.href)
+                  const colour = itemColours[index % itemColours.length]
                   if (!item.children) {
                     return (
                       <li key={item.href}>
                         <Link
                           href={item.href}
                           aria-current={active ? 'page' : undefined}
-                          className={`block px-3 py-2 text-sm font-semibold transition-colors ${active ? 'text-white' : 'text-white/80 hover:text-white'}`}
+                          data-active={active}
+                          className={`block px-3 py-2 text-sm font-semibold transition-colors ${underline} ${colour.line} ${active ? 'text-white' : 'text-white/80 hover:text-white'}`}
                         >
                           {item.label}
                         </Link>
@@ -132,7 +146,8 @@ export default function Navigation() {
                           href={item.href}
                           onClick={closeDropdown}
                           aria-current={active ? 'page' : undefined}
-                          className={`py-2 pl-3 pr-1 text-sm font-semibold transition-colors ${active ? 'text-white' : 'text-white/80 group-hover:text-white'}`}
+                          data-active={active}
+                          className={`py-2 pl-3 pr-1 text-sm font-semibold transition-colors ${underline} ${colour.line} ${active ? 'text-white' : 'text-white/80 group-hover:text-white'}`}
                         >
                           {item.label}
                         </Link>
@@ -153,7 +168,7 @@ export default function Navigation() {
                         id={menuId}
                         className={`absolute left-1/2 top-full -translate-x-1/2 pt-3 transition duration-150 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 ${open ? 'visible translate-y-0 opacity-100' : 'invisible -translate-y-1 opacity-0'}`}
                       >
-                        <ul className="w-80 bg-white p-2 shadow-xl ring-1 ring-slate-900/5">
+                        <ul className={`w-80 border-t-4 bg-white p-2 shadow-xl ring-1 ring-slate-900/5 ${colour.edge}`}>
                           {item.children.map((child) => (
                             <li key={child.href}>
                               <Link
@@ -207,6 +222,12 @@ export default function Navigation() {
               </svg>
             </button>
           </div>
+        </div>
+        <div aria-hidden className="flex h-1">
+          <span className="flex-1 bg-logo-pink" />
+          <span className="flex-1 bg-logo-orange" />
+          <span className="flex-1 bg-logo-green" />
+          <span className="flex-1 bg-logo-blue" />
         </div>
       </header>
 
