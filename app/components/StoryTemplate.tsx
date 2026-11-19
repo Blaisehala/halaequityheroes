@@ -10,7 +10,7 @@ export type FamilyStoryProps = {
   lead: string;
   body: string[];
   quote?: string;
-  photo?: { src: string; alt: string };
+  photo?: { src: string; alt: string; caption?: string };
   author: string;
   role?: string;
   colourIndex?: number;
@@ -24,13 +24,16 @@ export default function StoryTemplate({ label, title, lead, body, quote, photo, 
       <h2 className="mt-6 font-display text-4xl leading-tight text-brand-navy sm:text-5xl">{title}</h2>
       <div className={`mt-8 grid gap-10 ${photo ? "md:grid-cols-[1fr_1.1fr] md:items-start" : ""}`}>
         {photo && (
-          <Image
-            src={photo.src}
-            alt={photo.alt}
-            width={800}
-            height={1000}
-            className="h-auto w-full object-cover shadow-md"
-          />
+          <figure>
+            <Image
+              src={photo.src}
+              alt={photo.alt}
+              width={800}
+              height={1000}
+              className="h-auto w-full object-cover shadow-md"
+            />
+            {photo.caption && <figcaption className="mt-3 text-sm text-slate-500">{photo.caption}</figcaption>}
+          </figure>
         )}
         <div className={`border-l-4 pl-6 sm:pl-10 ${colour.border}`}>
           <p className="text-2xl font-extrabold leading-snug text-brand-navy">{lead}</p>

@@ -51,6 +51,24 @@ const chapters = [
   },
 ];
 
+// PLACEHOLDER STORIES: sample layout for the pitch. The photos are stock images (free-use licence)
+// and the text is not from real families. Replace each entry with the client's real story,
+// photo and consent before launch, and remove the "Placeholder" label.
+const placeholderStories = [
+  { src: "/images/pexels-askar-abayev-6190153.jpg", alt: "Stock photo of a woman in a yellow head wrap with her family", title: "Family story 1: title to come" },
+  { src: "/images/pexels-chris-wade-ntezicimpa-564856410-29718668.jpg", alt: "Stock photo of a mother holding her baby", title: "Family story 2: title to come" },
+  { src: "/images/pexels-greta-hoffman-9705938.jpg", alt: "Stock photo of a mother laughing with her toddler", title: "Family story 3: title to come" },
+  { src: "/images/pexels-greta-hoffman-9705671.jpg", alt: "Stock photo of parents kissing their toddler", title: "Family story 4: title to come" },
+  { src: "/images/pexels-oluwakoreimage-14197890.jpg", alt: "Stock photo of a family portrait", title: "Family story 5: title to come" },
+  { src: "/images/pexels-stewphotography-6645151.jpg", alt: "Stock photo of a grandmother with two granddaughters", title: "Family story 6: title to come" },
+];
+
+const extraPhotos = [
+  { src: "/images/pexels-earthworks-801523516-39820517.jpg", alt: "Stock photo of a group of women smiling together" },
+  { src: "/images/pexels-josiah-matthew-145486517-12909990.jpg", alt: "Stock photo of a group of friends" },
+  { src: "/images/pexels-musingapictures-39723486.jpg", alt: "Stock photo of an expecting couple" },
+];
+
 export default function OurStoryPage() {
   return (
     <main>
@@ -130,6 +148,38 @@ export default function OurStoryPage() {
           role="Hala Equity Heroes"
           colourIndex={0}
         />
+      </section>
+
+      {/* Placeholder family stories: layout only, not real testimonials */}
+      <section className="bg-brand-sky-tint px-6 py-20 sm:py-28">
+        <div className="mx-auto max-w-5xl space-y-24 sm:space-y-32">
+          {placeholderStories.map((story, i) => (
+            <StoryTemplate
+              key={story.src}
+              label="Placeholder story"
+              title={story.title}
+              lead="Placeholder: a real family's story will appear here."
+              body={[
+                "This text is a layout placeholder, not a real account. It will be replaced with the story of a parent or carer, told in their own words and with their consent.",
+              ]}
+              photo={{ src: story.src, alt: story.alt, caption: "Stock photo, placeholder only" }}
+              author="Name to come"
+              role="Family story"
+              colourIndex={i + 1}
+            />
+          ))}
+        </div>
+        <div className="mx-auto mt-24 max-w-5xl">
+          <Eyebrow>Heroes in community</Eyebrow>
+          <div className="mt-8 grid gap-5 sm:grid-cols-3">
+            {extraPhotos.map((photo) => (
+              <figure key={photo.src}>
+                <Image src={photo.src} alt={photo.alt} width={800} height={1000} className="h-auto w-full object-cover shadow-md" />
+                <figcaption className="mt-3 text-sm text-slate-500">Stock photo, placeholder only</figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* Pull quote */}
