@@ -29,7 +29,7 @@ export default function AboutPage() {
 
       <RevealCard
         eyebrow="Our story"
-        title="Serving those in need since 2020"
+        title="Serving those in need since 2023"
         image={photos.benchRow}
         paragraphs={[
           "Globally, billions still lack access to safe systems of care. Children and families wait for resources that never arrive through traditional philanthropy.",

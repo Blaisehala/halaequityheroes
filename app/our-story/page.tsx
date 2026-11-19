@@ -3,22 +3,23 @@ import Image from "next/image";
 import Link from "next/link";
 import PageHero from "../components/PageHero";
 import Eyebrow, { logoCycle } from "../components/Eyebrow";
+import StoryTemplate from "../components/StoryTemplate";
 import { pageMetadata } from "../lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: "Our Story",
   description:
-    "How Hala Equity Heroes came about — from serving those in need since 2020 to a global family of everyday Heroes working for healthcare equity.",
+    "How Hala Equity Heroes came about — from serving those in need since 2023 to a global family of everyday Heroes working for healthcare equity.",
   path: "/our-story",
 });
 
 // The chapters use only what the site already says about Hala Equity Heroes.
 // TODO: add the real founding story — who started it, how the name "Hala" was chosen,
-// and key milestones since 2020 — then extend or replace these chapters.
+// and key milestones since 2023 — then extend or replace these chapters.
 const chapters = [
   {
     title: "Where it began",
-    lead: "Serving those in need since 2020.",
+    lead: "Serving those in need since 2023.",
     body: [
       "Globally, billions still lack access to safe systems of care. Children and families wait for resources that never arrive through traditional philanthropy.",
       "Hala Equity Heroes began with a simple commitment: to show up for the people who are closest to the challenge and furthest from resources.",
@@ -90,6 +91,45 @@ export default function OurStoryPage() {
             })}
           </ol>
         </div>
+      </section>
+
+      {/* Families: the parents and carers this work is for */}
+      <section className="bg-brand-sky-tint px-6 py-20 sm:py-28">
+        <div className="mx-auto max-w-5xl">
+          <Eyebrow>The families behind the work</Eyebrow>
+          <h2 className="mt-6 font-display text-4xl leading-tight text-brand-navy sm:text-5xl">
+            Parents who never stop showing up
+          </h2>
+          <div className="mt-6 max-w-3xl space-y-4 text-lg leading-relaxed text-slate-600">
+            <p>
+              Caring for a child with sickle cell means hospital visits that arrive without warning, medicines that have to
+              be exact, and nights spent watching for signs of pain or infection. Many parents do this while holding down
+              work, looking after other children, and trying to keep their own health together.
+            </p>
+            <p>
+              Often the hardest part is carrying it alone. We want every parent to know that they are not alone, and that
+              the Heroes who stand with them are part of a community that understands what they face.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* A family story, told in the Heroes' own words */}
+      <section className="bg-white px-6 py-20 sm:py-28">
+        <StoryTemplate
+          label="A family inheritance"
+          title="Why equity is personal"
+          lead="For Beatrix, equity is not only a professional value. It is a family inheritance."
+          body={[
+            "The story starts with a grandfather who, at first, did not think girls should go to school. Her mother refused to let that end her education. She made and sold sisal rope to pay for her own uniform and school supplies, went on to become a teacher, and in time won her father's support for her schooling.",
+            "The same question of who gets what, and when, came back in the next generation. Her siblings could not get hydroxyurea, a medicine that helps people with sickle cell, because of where and when they lived. Families all over the world are still making the same choice between medicine and food, based on their income or where they happen to live.",
+            "That is why Hala Equity Heroes exists: to close the gap between people who can get care and people who cannot.",
+          ]}
+          quote="Equity isn't just a professional value for me, it's a family inheritance."
+          author="Beatrix A."
+          role="Hala Equity Heroes"
+          colourIndex={0}
+        />
       </section>
 
       {/* Pull quote */}
