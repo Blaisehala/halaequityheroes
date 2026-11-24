@@ -25,13 +25,9 @@ export default function StoryTemplate({ label, title, lead, body, quote, photo, 
       <div className={`mt-8 grid gap-10 ${photo ? "md:grid-cols-[1fr_1.1fr] md:items-start" : ""}`}>
         {photo && (
           <figure>
-            <Image
-              src={photo.src}
-              alt={photo.alt}
-              width={800}
-              height={1000}
-              className="h-auto w-full object-cover shadow-md"
-            />
+            <div className="relative h-[38vh] min-h-[220px] w-full overflow-hidden shadow-md">
+              <Image src={photo.src} alt={photo.alt} fill sizes="(min-width: 768px) 45vw, 100vw" className="object-cover" />
+            </div>
             {photo.caption && <figcaption className="mt-3 text-sm text-slate-500">{photo.caption}</figcaption>}
           </figure>
         )}

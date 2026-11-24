@@ -3,7 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import PageHero from "../components/PageHero";
 import Eyebrow, { logoCycle } from "../components/Eyebrow";
-import StoryTemplate from "../components/StoryTemplate";
+import StoryTemplate, { type FamilyStoryProps } from "../components/StoryTemplate";
+import FamilyStorySlider from "../components/FamilyStorySlider";
 import { pageMetadata } from "../lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -50,6 +51,22 @@ const chapters = [
     ],
   },
 ];
+
+// Mama Destiny's story, shortened. Told in the first person by the person who met her (consent given).
+const mamaDestiny: FamilyStoryProps = {
+  label: "A mother's story",
+  title: "Mama Destiny",
+  lead: "I watched one of her twins die because blood didn't arrive in time.",
+  body: [
+    "I met Mama Destiny at our monthly sickle cell clinic in Bungoma County. She is raising three children alone, and all three have sickle cell disease.",
+    "Last year, she lost the twin of her two-year-old. Blood could only be given after someone donated to replace it, and she couldn't donate because she was anaemic herself. The blood never came in time.",
+    "Every time her surviving twin needs another transfusion, that memory returns.",
+  ],
+  photo: { src: "/images/Mama_Destiny.jpeg", alt: "Mama Destiny" },
+  author: "Mama Destiny",
+  role: "Bungoma County",
+  colourIndex: 2,
+};
 
 // PLACEHOLDER STORIES: sample layout for the pitch. The photos are stock images (free-use licence)
 // and the text is not from real families. Replace each entry with the client's real story,
@@ -112,24 +129,67 @@ export default function OurStoryPage() {
       </section>
 
       {/* Families: the parents and carers this work is for */}
-      <section className="bg-brand-sky-tint px-6 py-20 sm:py-28">
-        <div className="mx-auto max-w-5xl">
-          <Eyebrow>The families behind the work</Eyebrow>
-          <h2 className="mt-6 font-display text-4xl leading-tight text-brand-navy sm:text-5xl">
-            Parents who never stop showing up
-          </h2>
-          <div className="mt-6 max-w-3xl space-y-4 text-lg leading-relaxed text-slate-600">
-            <p>
-              Caring for a child with sickle cell means hospital visits that arrive without warning, medicines that have to
-              be exact, and nights spent watching for signs of pain or infection. Many parents do this while holding down
-              work, looking after other children, and trying to keep their own health together.
-            </p>
-            <p>
-              Often the hardest part is carrying it alone. We want every parent to know that they are not alone, and that
-              the Heroes who stand with them are part of a community that understands what they face.
-            </p>
-          </div>
-        </div>
+      <section className="flex min-h-[100svh] items-center bg-brand-sky-tint px-6 py-10 sm:py-12">
+        <FamilyStorySlider
+          slides={[
+            {
+              label: "Introduction",
+              node: (
+                <div className="mx-auto max-w-5xl">
+                  <Eyebrow>The families behind the work</Eyebrow>
+                  <h2 className="mt-6 font-display text-4xl leading-tight text-brand-navy sm:text-5xl">
+                    Parents who never stop showing up
+                  </h2>
+                  <div className="mt-6 max-w-3xl space-y-4 text-lg leading-relaxed text-slate-600">
+                    <p>
+                      Caring for a child with sickle cell means hospital visits that arrive without warning, medicines that have to
+                      be exact, and nights spent watching for signs of pain or infection. Many parents do this while holding down
+                      work, looking after other children, and trying to keep their own health together.
+                    </p>
+                    <p>
+                      Often the hardest part is carrying it alone. We want every parent to know that they are not alone, and that
+                      the Heroes who stand with them are part of a community that understands what they face.
+                    </p>
+                  </div>
+                </div>
+              ),
+            },
+            { label: "Mama Destiny", node: <StoryTemplate {...mamaDestiny} /> },
+            {
+              label: "Mama Morris",
+              node: (
+                <StoryTemplate
+                  label="A mother's story"
+                  title="Mama Morris"
+                  lead="She says she is always tired."
+                  body={[
+                    "Her son lives with sickle cell. Check-ups and medicine come at a cost, and for a very long time she was not able to provide them for him.",
+                    "She was able to tell her child something she knows is a painful thing to say.",
+                  ]}
+                  photo={{ src: "/images/Mama_Morris.png", alt: "Mama Morris" }}
+                  author="Mama Morris"
+                  role="Bungoma County"
+                  colourIndex={3}
+                />
+              ),
+            },
+            ...placeholderStories.map((story, i) => ({
+              label: `Story ${i + 2}`,
+              node: (
+                <StoryTemplate
+                  title={story.title}
+                  label="Placeholder story"
+                  lead="Placeholder: a real family's story will appear here."
+                  body={["This text is a layout placeholder, not a real account. It will be replaced with the story of a parent or carer, told in their own words and with their consent."]}
+                  photo={{ src: story.src, alt: story.alt, caption: "Stock photo, placeholder only" }}
+                  author="Name to come"
+                  role="Family story"
+                  colourIndex={i + 1}
+                />
+              ),
+            })),
+          ]}
+        />
       </section>
 
       {/* A family story, told in the Heroes' own words */}
@@ -150,25 +210,8 @@ export default function OurStoryPage() {
         />
       </section>
 
-      {/* Placeholder family stories: layout only, not real testimonials */}
-      <section className="bg-brand-sky-tint px-6 py-20 sm:py-28">
-        <div className="mx-auto max-w-5xl space-y-24 sm:space-y-32">
-          {placeholderStories.map((story, i) => (
-            <StoryTemplate
-              key={story.src}
-              label="Placeholder story"
-              title={story.title}
-              lead="Placeholder: a real family's story will appear here."
-              body={[
-                "This text is a layout placeholder, not a real account. It will be replaced with the story of a parent or carer, told in their own words and with their consent.",
-              ]}
-              photo={{ src: story.src, alt: story.alt, caption: "Stock photo, placeholder only" }}
-              author="Name to come"
-              role="Family story"
-              colourIndex={i + 1}
-            />
-          ))}
-        </div>
+      {/* Photo strip */}
+      <section className="bg-brand-sky-tint px-6 pb-20 sm:pb-28">
         <div className="mx-auto mt-24 max-w-5xl">
           <Eyebrow>Heroes in community</Eyebrow>
           <div className="mt-8 grid gap-5 sm:grid-cols-3">

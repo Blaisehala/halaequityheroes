@@ -3,6 +3,7 @@ import { Instrument_Serif, Nunito } from "next/font/google";
 import "./globals.css";
 import Navigation from "./components/Navigation";
 import SiteFooter from "./components/SiteFooter";
+import VolunteerPrompt from "./components/VolunteerPrompt";
 import { defaultOgImage, siteDescription, siteName, siteUrl } from "./lib/seo";
 
 const nunito = Nunito({
@@ -81,6 +82,7 @@ export default function RootLayout({
         />
         <Navigation />
         {children}
+        <VolunteerPrompt />
         <SiteFooter />
       </body>
     </html>

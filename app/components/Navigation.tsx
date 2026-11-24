@@ -12,6 +12,7 @@ type NavItem = { href: string; label: string; children?: NavChild[] }
 // Every link is rendered into the server HTML (dropdowns are hidden with CSS,
 // not unmounted) so search engines can crawl the whole menu.
 const navItems: NavItem[] = [
+  { href: '/', label: 'Home' },
   {
     href: '/about',
     label: 'About Us',

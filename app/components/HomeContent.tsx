@@ -44,7 +44,7 @@ export default function HomeContent() {
             then the details below the wheel */}
 <section className="relative overflow-hidden bg-brand-navy text-white">
   <div className="relative z-20 mx-auto max-w-4xl px-6 pt-12 text-center sm:pt-16">
-    <h1 className="whitespace-nowrap text-[clamp(1.2rem,4.6vw,2.9rem)] font-medium leading-tight tracking-normal text-white/80">
+    <h1 className="whitespace-nowrap text-[clamp(1.2rem,4.6vw,2.9rem)] font-[650] leading-tight tracking-normal text-white/80">
       Quality First, Equity Always
     </h1>
   </div>

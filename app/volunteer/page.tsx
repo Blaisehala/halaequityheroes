@@ -70,7 +70,15 @@ export default function VolunteerPage() {
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div className="max-w-xl">
               <Eyebrow>Where you can help</Eyebrow>
-              <h2 className="mt-4 font-display text-4xl text-brand-navy sm:text-5xl">Find your project team</h2>
+              <div className="mt-4 flex flex-wrap items-center gap-5">
+                <h2 className="font-display text-4xl text-brand-navy sm:text-5xl">Find your project team</h2>
+                <Link
+                  href="/contact"
+                  className="rounded-full bg-brand-amber px-6 py-3 text-sm font-extrabold uppercase tracking-wide text-brand-navy shadow-sm transition hover:-translate-y-0.5 hover:bg-brand-amber-dark"
+                >
+                  Volunteer now
+                </Link>
+              </div>
             </div>
             <p className="max-w-sm leading-relaxed text-slate-600">
               Tell us which team suits you — we&apos;ll match you with initiatives that align with your values and capacity.
