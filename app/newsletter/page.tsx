@@ -11,12 +11,6 @@ export const metadata: Metadata = pageMetadata({
   path: "/newsletter",
 });
 
-const sections = [
-  { title: "New initiatives", body: "Be first to hear where Heroes are needed next." },
-  { title: "Impact snapshots", body: "See what your time and gifts are making possible." },
-  { title: "Ways to plug in", body: "Simple, practical ways to take part each month." },
-];
-
 const promises = [
   { title: "Once a month", body: "One email, never a flood." },
   { title: "No spam", body: "Just stories and ways to support equity work around the world." },
@@ -24,6 +18,14 @@ const promises = [
 ];
 
 const newsletterUrl = "https://www.linkedin.com/newsletters/no-one-left-behind-7477989624964079616/";
+
+// Images for each edition, in the same order as pastIssues (the charity's existing site photos).
+const issueImages: ({ src: string; alt: string } | null)[] = [
+  { src: "/images/people.jpeg", alt: "People from the Hala Equity Heroes community" },
+  { src: "/images/Congregation.jpeg", alt: "Congregation at a Hala Equity Heroes event" },
+  { src: "/images/hero4.jpg", alt: "Hala Equity Heroes community photo" },
+  { src: "/images/hero5.jpg", alt: "Hala Equity Heroes community photo" },
+];
 
 // Editions of the "No One Left Behind" LinkedIn newsletter (monthly), newest first.
 const pastIssues: { title: string; date: string; href: string }[] = [
@@ -73,36 +75,41 @@ export default function NewsletterPage() {
         </div>
       </section>
 
-      {/* What's inside, shown as a preview of the email */}
+      {/* Each No One Left Behind edition as a box: image, then what the issue was about */}
       <section className="bg-white px-6 py-20 sm:py-24">
         <div className="mx-auto max-w-6xl">
           <Eyebrow>What&apos;s inside</Eyebrow>
           <h2 className="mt-4 font-display text-4xl text-brand-navy sm:text-5xl">A look at each issue</h2>
-          <div className="mx-auto mt-12 max-w-3xl border border-slate-200 shadow-xl">
-            <div className="flex items-center gap-4 border-b border-slate-200 bg-slate-50 px-6 py-4">
-              <Image src="/images/logo-mark.png" alt="" width={52} height={41} className="h-8 w-auto" />
-              <div className="min-w-0">
-                <p className="truncate text-sm font-bold text-brand-navy">Hala Equity Heroes</p>
-                <p className="truncate text-sm text-slate-500">Your monthly community notes</p>
-              </div>
-            </div>
-            <div aria-hidden className="flex h-1.5">
-              {logoCycle.map((c) => (
-                <span key={c.border} className={`flex-1 ${c.border.replace("border-", "bg-")}`} />
-              ))}
-            </div>
-            <ol className="divide-y divide-slate-200 bg-white">
-              {sections.map((s, i) => (
-                <li key={s.title} className="flex gap-5 px-6 py-7 sm:px-10">
-                  <span className={`font-display text-4xl leading-none ${logoCycle[i].text}`}>0{i + 1}</span>
-                  <div>
-                    <h3 className="text-lg font-extrabold text-brand-navy">{s.title}</h3>
-                    <p className="mt-1 leading-relaxed text-slate-600">{s.body}</p>
+          <ul className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {pastIssues.map((issue, i) => {
+              const colour = logoCycle[i % logoCycle.length];
+              const photo = issueImages[i];
+              return (
+                <li key={issue.href} className={`flex flex-col border-t-8 bg-white shadow-lg ${colour.border}`}>
+                  <div className="relative aspect-[4/3] w-full bg-slate-100">
+                    {photo ? (
+                      <Image src={photo.src} alt={photo.alt} fill sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" className="object-cover" />
+                    ) : (
+                      <div className="flex h-full items-center justify-center text-sm font-bold text-slate-500">Image to come</div>
+                    )}
+                  </div>
+                  <div className="flex flex-1 flex-col p-6">
+                    <span className="text-xs font-bold uppercase tracking-[0.18em] text-slate-500">{issue.date}</span>
+                    <h3 className="mt-2 text-lg font-extrabold leading-snug text-brand-navy">{issue.title}</h3>
+                    <p className="mt-3 flex-1 leading-relaxed text-slate-600">Summary to come.</p>
+                    <a
+                      href={issue.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-5 text-sm font-bold text-brand-blue hover:underline"
+                    >
+                      Read on LinkedIn &rarr;
+                    </a>
                   </div>
                 </li>
-              ))}
-            </ol>
-          </div>
+              );
+            })}
+          </ul>
         </div>
       </section>
 

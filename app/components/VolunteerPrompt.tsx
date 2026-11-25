@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 // A floating Volunteer button that appears once the visitor has scrolled past the hero,
 // plus a one-time pop-up invitation as they near the bottom of the page.
-// The pop-up is dismissed for the session (sessionStorage), and both are hidden on /volunteer.
+// The pop-up is dismissed for the session (sessionStorage) and is not shown on /volunteer.
 const POPUP_KEY = "hala-volunteer-prompt-dismissed";
 
 export default function VolunteerPrompt() {
@@ -35,7 +35,8 @@ export default function VolunteerPrompt() {
     return () => window.removeEventListener("scroll", onScroll);
   }, [dismissed]);
 
-  if (pathname?.startsWith("/volunteer")) return null;
+  // On the volunteer page the floating button still shows, but the pop-up is not needed.
+  const onVolunteerPage = pathname?.startsWith("/volunteer") ?? false;
 
   const close = () => {
     setShowPopup(false);
@@ -58,7 +59,7 @@ export default function VolunteerPrompt() {
         </Link>
       )}
 
-      {showPopup && (
+      {showPopup && !onVolunteerPage && (
         <div
           role="dialog"
           aria-modal="false"

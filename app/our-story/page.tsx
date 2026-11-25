@@ -157,7 +157,7 @@ export default function OurStoryPage() {
                 />
               ),
             },
-            ...placeholderStories.map((story, i) => ({
+            ...placeholderStories.slice(0, 2).map((story, i) => ({
               label: `Story ${i + 2}`,
               node: (
                 <StoryTemplate
