@@ -27,27 +27,11 @@ const chapters = [
     ],
   },
   {
-    title: "A different way of helping",
-    lead: "Communities lead. Heroes support.",
-    body: [
-      "Traditional philanthropy often leaves the most impacted people out of the room. We set out to flip the script by moving decisions, resources, and storytelling power into the hands of community organizers, educators, caregivers, and youth leaders.",
-      "No gatekeeping. No saviorism. Just people showing up for each other.",
-    ],
-  },
-  {
     title: "Why “Heroes”",
     lead: "You do not need a foundation to change the world. You just need to start.",
     body: [
       "We are carried by a family of volunteers from around the world — from organisers, nurses, and mentors to volunteer teachers, technicians, and those who are just ready to start.",
       "Every one of them is a Hero: someone who gives what they can, when they can.",
-    ],
-  },
-  {
-    title: "Where we are going",
-    lead: "Healthcare for all.",
-    body: [
-      "Behind every sickle cell diagnosis is a child with a name, a laugh, and a future still being written. We work so that no child or family faces it alone.",
-      "Our promise has not changed: quality first, equity always.",
     ],
   },
 ];
@@ -100,7 +84,7 @@ export default function OurStoryPage() {
         <div className="mx-auto max-w-5xl">
           <div className="flex items-center gap-6">
             <Image src="/images/logo-mark.png" alt="" width={78} height={62} className="h-14 w-auto" />
-            <Eyebrow>Four chapters</Eyebrow>
+            <Eyebrow>Two chapters</Eyebrow>
           </div>
 
           <ol className="mt-16 space-y-24 sm:space-y-32">
@@ -109,7 +93,7 @@ export default function OurStoryPage() {
               return (
                 <li key={chapter.title} className="grid gap-6 md:grid-cols-[10rem_1fr] md:gap-14">
                   <div className="md:sticky md:top-32 md:self-start">
-                    <span className={`block font-display text-8xl leading-none sm:text-9xl ${colour.text}`}>{i + 1}</span>
+                    <span className={`block font-display text-6xl leading-none sm:text-7xl ${colour.text}`}>{i + 1}</span>
                     <span className="mt-2 block text-xs font-bold uppercase tracking-[0.22em] text-slate-500">Chapter {i + 1}</span>
                   </div>
                   <div className={`border-l-4 pl-6 sm:pl-10 ${colour.border}`}>
