@@ -14,24 +14,27 @@ export const metadata: Metadata = pageMetadata({
   path: "/our-story",
 });
 
-// The chapters use only what the site already says about Hala Equity Heroes.
-// TODO: add the real founding story — who started it, how the name "Hala" was chosen,
-// and key milestones since 2023 — then extend or replace these chapters.
-const chapters = [
+// The founder's own words, supplied by Dr Beatrix J Atieno.
+const founderSections = [
   {
-    title: "Where it began",
-    lead: "Serving those in need since 2023.",
+    title: "The name Hala",
     body: [
-      "Globally, billions still lack access to safe systems of care. Children and families wait for resources that never arrive through traditional philanthropy.",
-      "Hala Equity Heroes began with a simple commitment: to show up for the people who are closest to the challenge and furthest from resources.",
+      "Hala Equity Heroes is named after my maternal grandfather, Macarius Hala. I never met him; he passed away before I was born. But through my mother’s stories, I came to know him as a man who believed deeply in fairness and dignity. A Roman Catholic catechist, he treated everyone equally, whether they were his own children or members of his community. His name reminds us every day that every person deserves to be treated with the same dignity.",
     ],
   },
   {
-    title: "Why “Heroes”",
-    lead: "You do not need a foundation to change the world. You just need to start.",
+    title: "Lessons from my parents",
     body: [
-      "We are carried by a family of volunteers from around the world — from organisers, nurses, and mentors to volunteer teachers, technicians, and those who are just ready to start.",
-      "Every one of them is a Hero: someone who gives what they can, when they can.",
+      "My parents (Daniel Damian Obare Awora 1937-2014 and Maria Anyango Obare, née Hala 1939-2024) were teachers, and equity was something they lived. They made sure every child they taught stayed in school: the unruly and the gifted, the underprivileged and those who struggled to keep up. They brought the best out of each one, and they paid school fees for many children from the villages where they grew up, so that whole communities could be educated.",
+      "They did all this while raising their own family, including two children living with sickle cell disease. I watched them balance classrooms and hospital wards, hope and worry. Growing up in that home, I learned that fairness is not just an idea; it is a daily choice.",
+    ],
+  },
+  {
+    title: "Why we exist",
+    body: [
+      "Today, as a medical doctor, I carry that lesson into health. Families living with sickle cell disease and other chronic illnesses face barriers that reach far beyond the clinic. A child cannot stay well without consistent care, cannot learn when they are sick or hungry, and cannot thrive when their family is struggling to put food on the table.",
+      "That is why Hala Equity Heroes works for equity in health, education and food security for people living with sickle cell disease and other chronic non-communicable diseases. We support families to access care, keep children in school and build sustainable livelihoods, so that no family has to choose between health, learning and food.",
+      "Inspired by my grandfather’s fairness and my parents’ dedication, we believe every person, whatever their health or background, deserves an equal chance to live a full and dignified life.",
     ],
   },
 ];
@@ -79,36 +82,26 @@ export default function OurStoryPage() {
         intro="From a commitment to serve those in need to a global family of everyday Heroes working for healthcare equity."
       />
 
-      {/* Chapters: the big number stays in view beside its text as you scroll */}
+      {/* Founder's story: who we are, in the founder's own words */}
       <section className="bg-white px-6 py-20 sm:py-28">
-        <div className="mx-auto max-w-5xl">
-          <div className="flex items-center gap-6">
-            <Image src="/images/logo-mark.png" alt="" width={78} height={62} className="h-14 w-auto" />
-            <Eyebrow>Two chapters</Eyebrow>
+        <div className="mx-auto max-w-3xl">
+          <Eyebrow>Who we are</Eyebrow>
+          <h2 className="mt-4 font-display text-4xl text-brand-navy sm:text-5xl">A founder’s story</h2>
+          <div className="mt-12 space-y-12">
+            {founderSections.map((section) => (
+              <div key={section.title} className="border-l-4 border-brand-amber pl-6 sm:pl-10">
+                <h3 className="font-display text-3xl text-brand-navy">{section.title}</h3>
+                <div className="mt-4 space-y-4 text-lg leading-relaxed text-slate-600">
+                  {section.body.map((p) => (
+                    <p key={p.slice(0, 40)}>{p}</p>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
-
-          <ol className="mt-16 space-y-24 sm:space-y-32">
-            {chapters.map((chapter, i) => {
-              const colour = logoCycle[i % logoCycle.length];
-              return (
-                <li key={chapter.title} className="grid gap-6 md:grid-cols-[10rem_1fr] md:gap-14">
-                  <div className="md:sticky md:top-32 md:self-start">
-                    <span className={`block font-display text-6xl leading-none sm:text-7xl ${colour.text}`}>{i + 1}</span>
-                    <span className="mt-2 block text-xs font-bold uppercase tracking-[0.22em] text-slate-500">Chapter {i + 1}</span>
-                  </div>
-                  <div className={`border-l-4 pl-6 sm:pl-10 ${colour.border}`}>
-                    <h2 className="font-display text-4xl text-brand-navy sm:text-5xl">{chapter.title}</h2>
-                    <p className="mt-5 text-2xl font-extrabold leading-snug text-brand-navy">{chapter.lead}</p>
-                    <div className="mt-5 space-y-4 text-lg leading-relaxed text-slate-600">
-                      {chapter.body.map((p) => (
-                        <p key={p}>{p}</p>
-                      ))}
-                    </div>
-                  </div>
-                </li>
-              );
-            })}
-          </ol>
+          <p className="mt-12 text-sm font-bold uppercase tracking-[0.18em] text-slate-500">
+            Dr Beatrix J Atieno <span className="font-normal normal-case tracking-normal">· Founder</span>
+          </p>
         </div>
       </section>
 
